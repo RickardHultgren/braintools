@@ -58,13 +58,13 @@ END:VEVENT
 BEGIN:VEVENT
 DTSTART:%sT030000Z
 DTEND:%sT032900Z
-SUMMARY:Charge: planned moves in GO :: blues-song about "going up" :: walk the dog + voice voice worm up -- (sirine i-o :: ba ba ba :: lip-farting :: la la la la :: rrrrrr :: sighing with bird flying and deep-breath) :: in toilet: exercise:Wim hoff(30 strong inhales) + reboot :: social mail.
+SUMMARY:Possible to blues-sing about "going up" ;; else planned moves in GO :: walk the dog + voice voice worm up -- (sirine i-o :: ba ba ba :: lip-farting :: la la la la :: rrrrrr :: sighing with bird flying and deep-breath) :: in toilet: exercise:Wim hoff(30 strong inhales) + reboot :: social mail.
 END:VEVENT
 
 BEGIN:VEVENT
 DTSTART:%sT030000Z
 DTEND:%sT032900Z
-SUMMARY:Charge: I brew coffee/tea and smell it :: II field of view :: III ptosis? :: IV eye: adduct, up :: V gape, clean head, eye, teeth :: VI eye:abduct=look behind :: VII Rins - peripheral: forehead ; central:cheeks with salt water :: VIII balance on one leg :: IX taste tooth brush :: X valsalva maneuver :: XI shrug :: XII swollow chili  
+SUMMARY:Charge: I brew coffee/tea and smell it :: II field of view :: III ptosis? :: IV eye: adduct, up :: V gape, clean head, eye, teeth :: VI eye:abduct=look behind :: VII Grimace - peripheral: forehead ; central and taste:Rins cheeks with salt water :: VIII balance on one leg :: IX taste tooth brush :: X valsalva maneuver :: XI shrug :: XII swollow chili  
 END:VEVENT
 
 BEGIN:VEVENT
