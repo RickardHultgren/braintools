@@ -64,7 +64,7 @@ END:VEVENT
 BEGIN:VEVENT
 DTSTART:%sT030000Z
 DTEND:%sT032900Z
-SUMMARY:Charge: I brew coffee/tea and smell it :: II field of view :: III ptosis? :: IV eye: adduct, up :: V gape, clean head, eye, teeth :: VI eye:abduct=look behind :: VII Grimace - peripheral: forehead ; central and taste:Rins cheeks with salt water :: VIII balance on one leg :: IX taste tooth brush :: X valsalva maneuver :: XI shrug :: XII swollow chili  
+SUMMARY:Charge: I brew coffee/tea and smell it :: II field of view (quadrans), torch test :: III ptosis? :: IV eye: adduct, up :: V gape and bite, clean head, eye, teeth :: VI eye:abduct=look behind :: VII Grimace - (peripheral: forehead, bottom eyelid, and symptoms as in central) ; (central and taste:smile, rins cheeks with salt water) :: VIII balance on one leg :: IX taste tooth brush, tongue blub :: X valsalva maneuver :: XI shrug shoulders :: XII swollow chili  
 END:VEVENT
 
 BEGIN:VEVENT
