@@ -95,7 +95,7 @@ END:VEVENT
 BEGIN:VEVENT
 DTSTART:%sT200000Z
 DTEND:%sT220000Z
-SUMMARY:Prepare: alarms :: go through the morning routines, what is the first thing I hould do inthe morning? :: relax body :: 4-7-8 breathing technique
+SUMMARY:Prepare: alarms :: go through the morning routines, what is the first thing I should do in the morning? :: fire meditation :: relax body :: 4-7-8 breathing technique
 END:VEVENT
 """ % (numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers)
 
