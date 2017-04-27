@@ -32,7 +32,7 @@ while go == 1 :
 	print week[weekd]
 	numbers = "%s" % ((datetime.now() + timedelta(days=countday)).strftime("%Y%m%d"))
 	if weekd == 4:
-		if countday != 0 :
+		#if countday != 0 :
 			go = 0
 			workday = workday + """
 BEGIN:VEVENT
@@ -53,7 +53,8 @@ DTEND:%sT150000Z
 SUMMARY:Food planning for next week
 END:VEVENT
 """ % (numbers, numbers, numbers, numbers,numbers, numbers)
-	if weekd < 6 and countday != 0:
+	#if weekd < 6 and countday != 0:
+	if weekd < 6 or countday < 14 :
 		workday = workday + """
 BEGIN:VEVENT
 DTSTART:%sT030000Z
@@ -103,7 +104,7 @@ END:VEVENT
 	#Put new days in ICS
 	#workday = workday.strip('\t')
 	weekd = weekd + 1
-	if weekd>6:
+	if weekd==7:
 		weekd=0
 	countday=countday + 1
 pattern = re.compile(r'[\n\r]\s*(?=[\n\r])',re.MULTILINE)
