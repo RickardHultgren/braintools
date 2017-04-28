@@ -39,7 +39,7 @@ keyTime = { \key c \major \time 4/4 }
 ManualOneVoiceOneMusic = \relative c' {
 
       
-  		c'8 bes g bes r2 
+  		c'8 b g b r2 
 		bes8  a  f  a  f2 
 		r1 
 		r2 r8 c'8 c8 bes8
@@ -61,7 +61,7 @@ ManualOneVoiceOneMusic = \relative c' {
 ManualOneVoiceOneMusicCoda = \relative c' {
 
    \mark \markup { "CODA" \musicglyph #"scripts.coda" }
-  	 c'8 bes g bes r2 
+  	 c'8 b g b r2 
 		bes8  a  f  a  f2 
 		r1
 		r1 		
