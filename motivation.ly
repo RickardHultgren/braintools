@@ -5,10 +5,58 @@
 %%2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 %%THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+
 \version "2.18.2"
  
 %%\include "svenska.ly"
 %%\include "english.ly"
+
+swing = \mark \markup { 
+  \line \general-align #Y #DOWN { \score { 
+  \new Staff \with {
+    fontSize = #-2
+    \override StaffSymbol #'line-count = #0 
+    \override VerticalAxisGroup #'Y-extent = #'(0 . 0)
+  }
+  \relative { 
+    \stemUp 
+    \override Score.SpacingSpanner 
+      #'common-shortest-duration = #(ly:make-moment 3 16) 
+    \override Beam #'positions = #'(2.5 . 2.5)
+    b'8[ b8] 
+  }
+  \layout {
+    ragged-right= ##t
+    indent = 0
+    \context { 
+    \Staff \remove "Clef_engraver" 
+    \remove "Time_signature_engraver" }
+  }} " ="
+  \score { \new Staff \with {
+    fontSize = #-2
+    \override StaffSymbol #'line-count = #0 
+    \override VerticalAxisGroup #'Y-extent = #'(0 . 0)
+  }
+  \relative { 
+    \stemUp 
+    \override Score.SpacingSpanner 
+      #'common-shortest-duration = #(ly:make-moment 3 16)
+    \override Beam #'positions = #'(2.5 . 2.5)
+    \times 2/3 { b'8[ r b8] } 
+  }
+  \layout {
+    ragged-right= ##t
+    indent = 0
+    \context { 
+      \Staff 
+      \remove "Clef_engraver" 
+      \remove "Time_signature_engraver" }
+    }}
+  \fontsize #-2
+  \italic { "  swing" }
+  }
+}
+
 date = #(strftime "%d-%m-%Y" (localtime (current-time)))
 
 italic = {
@@ -38,6 +86,7 @@ normal = {
 keyTime = { \key c \major \time 4/4 }
 ManualOneVoiceOneMusic = \relative c' {
 
+      \set midiInstrument = #"flute"
       
   		c'8 b g b r2 
 		bes8  a  f  a  f2 
@@ -88,21 +137,20 @@ ManualTwoTwoMusicCoda = \relative c {
 \score {
   <<  % PianoStaff and Pedal Staff must be simultaneous
     \new PianoStaff <<
-      
       \chords { g1:7 f1:7 c1 g1:7 c1 c1 c1 c1:7 f1: f1:7 c1 c1:7 }
       \new Staff = "ManualOne" <<
 \textLengthOn
-s1*6^\markup {humming mood}
+s1*6^\markup {  }
 \keyTime  % set key and time signature
         \clef "treble"
         \new Voice {
-          
+          \swing
           \voiceOne
          
           \ManualOneVoiceOneMusic
         }
         \addlyrics {
-        I a -- nd you \bold build \normal o -- ur va -- lue. Let's view the \italic The end result object \normal respe -- ct the view. Just view the \italic Chunked down result object \normal respe -- ct the view.
+        I a -- nd you \bold build \normal o -- ur va -- lue. Let's view the [the end result object] respe -- ct the view. Just view the [chunked down result object] respe -- ct the view.
         }
       >>  % end ManualOne Staff context
       \new Staff = "ManualTwo" \with {
@@ -163,6 +211,8 @@ s1*6^\markup {humming mood}
     
     
   >>
+%%\midi {}
+
 }
 
 
