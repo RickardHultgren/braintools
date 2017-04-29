@@ -86,18 +86,18 @@ normal = {
 keyTime = { \key c \major \time 4/4 }
 ManualOneVoiceOneMusic = \relative c' {
 
-      \set midiInstrument = #"flute"
       
-  		c'8 b g b r2 
-		bes8  a  f  a  f2 
+      
+  		c'8 b g b(b4) r4
+		bes8  a  f  a(a4)  f4 
 		r1 
 		r2 r8 c'8 c8 bes8
-		a4 a a a
-		a8 bes8 b8 c8 r2
+		g4 g g g
+		g8 bes8 b8 c8 r2
 		r1 
 		r2 r8 c8 c8 bes8
-		a4 a a a
-		a8 bes8 b8 c8 r2
+		g4 g g g
+		g8 bes8 b8 c8 r2
 		r1
 		r1   ^\markup { { "D.S. al Coda" \musicglyph #"scripts.coda" } }
 
@@ -109,9 +109,9 @@ ManualOneVoiceOneMusic = \relative c' {
 
 ManualOneVoiceOneMusicCoda = \relative c' {
 
-   \mark \markup { "CODA" \musicglyph #"scripts.coda" }
-  	 c'8 b g b r2 
-		bes8  a  f  a  f2 
+  %% \mark \markup { "CODA" \musicglyph #"scripts.coda" }
+  	 c'8 b g b(b4) r4
+		bes8  a  f  a(a4)  f4 
 		r1
 		r1 		
 }
@@ -148,23 +148,24 @@ s1*6^\markup {  }
           \voiceOne
          
           \ManualOneVoiceOneMusic
+          \bar "||"
         }
         \addlyrics {
         I a -- nd you \bold build \normal o -- ur va -- lue. Let's view the [the end result object] respe -- ct the view. Just view the [chunked down result object] respe -- ct the view.
-        }
+        } 
       >>  % end ManualOne Staff context
-      \new Staff = "ManualTwo" \with {
+      %%\new Staff = "ManualTwo" \with {
 
       
-      } <<
-        \keyTime
-        \clef "bass"
-        \new Voice {
-          \ManualTwoTwoMusic
-         \bar "||"
-        }
+      %%} <<
+      %%  \keyTime
+      %%  \clef "bass"
+      %%  \new Voice {
+      %%    \ManualTwoTwoMusic
+      %%   \bar "||"
+      %%  }
        
-      >>   % end ManualTwo Staff context
+      %%>>   % end ManualTwo Staff context
       
     >>
 >>    
@@ -174,11 +175,11 @@ s1*6^\markup {  }
     
         \new PianoStaff <<
       
-      
+\chords { g1:7 f1:7 c1 c1 }      
       \new Staff = "ManualOneCoda" <<
 
 \textLengthOn
-\chords { g1:7 f1:7 c1 c1 }
+\mark \markup { "CODA" \musicglyph #"scripts.coda" }
 \keyTime  % set key and time signature
         \clef "treble"
         \new Voice {
@@ -186,7 +187,7 @@ s1*6^\markup {  }
           \voiceOne
           
           \ManualOneVoiceOneMusicCoda
-          \break
+          \bar "|."
 
         }
         \addlyrics {
@@ -194,18 +195,18 @@ s1*6^\markup {  }
         }
       >>  % end ManualOne Staff context
       
-      \new Staff = "ManualTwoCoda" \with {
+      %%\new Staff = "ManualTwoCoda" \with {
       
-      } <<
-        \keyTime
-        \clef "bass"
-        \new Voice {
+      %%} <<
+        %%\keyTime
+        %%\clef "bass"
+        %%\new Voice {
           
-          \ManualTwoTwoMusicCoda
-         \bar "|."
-        }
+        %%  \ManualTwoTwoMusicCoda
+        %% \bar "|."
+        %%}
        
-      >>   % end ManualTwo Staff context
+      %%>>   % end ManualTwo Staff context
       
     >>
     
