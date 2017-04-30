@@ -151,7 +151,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        I a -- nd you \bold build \normal o -- ur va -- lue now. Let's view the [the end result object] respe -- ct the view. Just view the [chunked down result object] respe -- ct the view.
+        I a -- nd you \bold build \normal o -- ur va -- lue now. Vi -- ew the [the end result object] respe -- ct the view. Vi -- ew the [chunked down result object] respe -- ct the view.
         } 
       >>  % end ManualOne Staff context
       %%\new Staff = "ManualTwo" \with {
