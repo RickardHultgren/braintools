@@ -90,14 +90,14 @@ ManualOneVoiceOneMusic = \relative c' {
       
   		c'8 b g b(b4) r4
 		bes8  a  f  a(a4)  f4 
-		r1 
+		e2 r2 
 		r2 r8 c'8 c8 bes8
 		g4 g g g
-		g8 bes8 b8 c8 r2
+		g8 bes8 b8 c8(c4) r4
 		r1 
 		r2 r8 c8 c8 bes8
 		g4 g g g
-		g8 bes8 b8 c8 r2
+		g8 bes8 b8 c8(c4) r4
 		r1
 		r1   ^\markup { { "D.S. al Coda" \musicglyph #"scripts.coda" } }
 
@@ -112,7 +112,7 @@ ManualOneVoiceOneMusicCoda = \relative c' {
   %% \mark \markup { "CODA" \musicglyph #"scripts.coda" }
   	 c'8 b g b(b4) r4
 		bes8  a  f  a(a4)  f4 
-		r1
+		e2 r2 
 		r1 		
 }
 
@@ -151,7 +151,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        I a -- nd you \bold build \normal o -- ur va -- lue. Let's view the [the end result object] respe -- ct the view. Just view the [chunked down result object] respe -- ct the view.
+        I a -- nd you \bold build \normal o -- ur va -- lue now. Let's view the [the end result object] respe -- ct the view. Just view the [chunked down result object] respe -- ct the view.
         } 
       >>  % end ManualOne Staff context
       %%\new Staff = "ManualTwo" \with {
@@ -169,6 +169,8 @@ s1*6^\markup {  }
       
     >>
 >>    
+\layout {}
+\midi {\tempo 4 = 140}
 }
 \score {
 <<    
@@ -191,7 +193,7 @@ s1*6^\markup {  }
 
         }
         \addlyrics {
-        I a -- nd you \bold build \normal o -- ur va -- lue.
+        I a -- nd you \bold build \normal o -- ur va -- lue now.
         }
       >>  % end ManualOne Staff context
       
@@ -212,7 +214,7 @@ s1*6^\markup {  }
     
     
   >>
-%%\midi {}
+
 
 }
 
