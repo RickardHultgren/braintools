@@ -151,7 +151,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        I a -- nd you \bold build \normal o -- ur va -- lue now. Vi -- ew the [the end result object] respe -- ct the view. Vi -- ew the [chunked down result object] respe -- ct the view.
+        I a -- nd you \bold build \normal o -- ur va -- lue now. Vi -- ew the [the end result object]. Respe -- ct the view. Vi -- ew the [chunked down result object]. Respe -- ct the view.
         } 
       >>  % end ManualOne Staff context
       %%\new Staff = "ManualTwo" \with {
@@ -219,4 +219,19 @@ s1*6^\markup {  }
 }
 
 
+#(define-markup-list-command (paragraph layout props args) (markup-list?)
+  (interpret-markup-list layout props
+   (make-justified-lines-markup-list (cons (make-hspace-markup 2) args))))
 
+\markuplist {
+  \override-lines #'(baseline-skip . 2.5) {
+    \paragraph {
+oxytocine: I and you build our value now.
+    }\paragraph {
+testosterone serotonine: View the [the end result object]. Respect the view. 
+    }\paragraph {
+acetylocholine dopamine: View the [the chunked down result object]. Respect the view. 
+    }
+    
+  }
+}
