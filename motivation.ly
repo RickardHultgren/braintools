@@ -224,14 +224,25 @@ s1*6^\markup {  }
    (make-justified-lines-markup-list (cons (make-hspace-markup 2) args))))
 
 \markuplist {
-  \override-lines #'(baseline-skip . 2.5) {
+    \vspace #2
+    \paragraph { \smallCaps{Comments}}
+    \vspace #.75
+    \paragraph {Imagine persons that you want to interact with. It can be another person or a future you. Sing this song about the interaction.}
+    \vspace #.75
+    \paragraph {\italic{I and you \bold{build} our value now.}
+    }\paragraph {We build the value of our interaction. This correlates to oxytocine.
+    }\vspace #.75
     \paragraph {
-oxytocine: I and you build our value now.
-    }\paragraph {
-testosterone serotonine: View the [the end result object]. Respect the view. 
-    }\paragraph {
-acetylocholine dopamine: View the [the chunked down result object]. Respect the view. 
+\italic{View the [the end result object].} 
+    }\paragraph {Describe the end result object of an activity. It can be your activity or the activity of another person. This correlates to testosterone and serotonine.
+    }\vspace #.75
+    \paragraph {\italic{View the [the chunked down result object].}}
+    \paragraph {Describe the road map to the end result. This correlates to acetylocholine dopamine.
+    }
+    \vspace #.75
+    \paragraph {\italic{Respect the view.}}
+    \paragraph {In order to deeply interact with another person the view of that person must be respected.
     }
     
   }
-}
+
