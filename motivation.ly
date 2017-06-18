@@ -239,7 +239,7 @@ s1*6^\markup {  }
     }\paragraph {Specify the end results. This correlates to serotonine.
     }\vspace #.75
     \paragraph {\italic{The next move is [the next move]}}
-    \paragraph {What is the next marker towards the end result? This correlates to acetylocholine.
+    \paragraph {This ensures you of the momentum towards the end result. This correlates to acetylocholine.
     }
     \vspace #.75
     \paragraph {\italic{I achieve that}}
