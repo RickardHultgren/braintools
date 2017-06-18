@@ -151,7 +151,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        I a -- nd you \bold build \normal o -- ur va -- lue now. Vi -- ew the [the end result object]. Respe -- ct the view. Vi -- ew the [chunked down result object]. Respe -- ct the view.
+        I a -- nd you \bold build \normal o -- ur va -- lue now. I will get [meaning of end results] from the [end results]. The next move is [the next move]. I ach -- ieve that.
         } 
       >>  % end ManualOne Staff context
       %%\new Staff = "ManualTwo" \with {
@@ -227,21 +227,23 @@ s1*6^\markup {  }
     \vspace #2
     \paragraph { \smallCaps{Comments}}
     \vspace #.75
-    \paragraph {Imagine persons that you want to interact with. It can be another person or a future you. Sing this song about the interaction.}
+    \paragraph {Imagine an interaction with another person or a future you.}
     \vspace #.75
     \paragraph {\italic{I and you \bold{build} our value now.}
     }\paragraph {We build the value of our interaction. This correlates to oxytocine.
     }\vspace #.75
-    \paragraph {
-\italic{View the [the end result object].} 
-    }\paragraph {Describe the end result object of an activity. It can be your activity or the activity of another person. This correlates to testosterone and serotonine.
+    \paragraph {\italic{I will get [meaning of end results]} 
+    }\paragraph {What will I gain from the end result? This correlates to testosterone.
     }\vspace #.75
-    \paragraph {\italic{View the [the chunked down result object].}}
-    \paragraph {Describe the road map to the end result. This correlates to acetylocholine dopamine.
+    \paragraph {\italic{from the [end results]} 
+    }\paragraph {Specify the end results. This correlates to serotonine.
+    }\vspace #.75
+    \paragraph {\italic{The next move is [the next move]}}
+    \paragraph {What is the next marker towards the end result? This correlates to acetylocholine.
     }
     \vspace #.75
-    \paragraph {\italic{Respect the view.}}
-    \paragraph {In order to deeply interact with another person the view of that person must be respected.
+    \paragraph {\italic{I achieve that}}
+    \paragraph {Focus on the next marker. This correlates to dopamine.
     }
     
   }
