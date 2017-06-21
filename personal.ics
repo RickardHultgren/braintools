@@ -11,7 +11,7 @@ DTEND:20170720T123000Z
 SUMMARY:1 question/min >> Detect weak spots in examiner: 1. Triggers (things that the examinor counsiously knows are important). 2. Fill the palace with what is obvious int question-answers. 3. Understand the palace -- gives confidence.
 END:VEVENT
 BEGIN:VEVENT
-DTSTART:201707207T133000Z
+DTSTART:20170720T133000Z
 DTEND:20170820T123000Z
 SUMMARY:Confront strong spots: 1. Go through lecture handouts. Check what topics are the same in the exam questions. 2. Ranking train of thoughts in exams and put into palace. 3. 007 -- check forums. 
 END:VEVENT
@@ -26,8 +26,18 @@ DTEND:201706251T060000Z
 SUMMARY:Prepare Kivy programming . 
 END:VEVENT
 BEGIN:VEVENT
-DTSTART:201706257T070000Z
+DTSTART:20170625T070000Z
 DTEND:20170710T163000Z
 SUMMARY:Translate code. 
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20170728T040000Z
+DTEND:20170728T193000Z
+SUMMARY:Maria birthday. 
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20170805T120000Z
+DTEND:20170805T193000Z
+SUMMARY:Maria birthday party. 
 END:VEVENT
 END:VCALENDAR
