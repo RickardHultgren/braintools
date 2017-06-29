@@ -151,7 +151,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        I a -- nd you \bold build \normal o -- ur va -- lue now. I will get [meaning of end results] from the [end results]. The next move is [the next move]. I ach -- ieve that.
+        I a -- nd you \bold build \normal o -- ur va -- lue now. You will get [meaning of end results] from the [end results]. Do -- ing next: [doing the next move]. I ach -- ieve that.
         } 
       >>  % end ManualOne Staff context
       %%\new Staff = "ManualTwo" \with {
