@@ -28,6 +28,9 @@ weekd = datetime.today().weekday()
 workday = ""
 nowday = datetime.now().strftime("%Y%m%d") #string to date
 countday = 0
+if weekd == 4:
+	numbers = "%s" % ((datetime.now() + timedelta(days=countday)).strftime("%Y%m%d"))
+	weekd = 5
 while go == 1 :
 	print week[weekd]
 	numbers = "%s" % ((datetime.now() + timedelta(days=countday)).strftime("%Y%m%d"))
@@ -57,19 +60,25 @@ END:VEVENT
 	if weekd < 6 or countday < 14 :
 		workday = workday + """
 BEGIN:VEVENT
-DTSTART:%sT030000Z
-DTEND:%sT032900Z
-SUMMARY:Possible to blues-sing about "going up" ;; else planned moves in GO :: walk the dog + voice voice worm up -- (sirine i-o :: ba ba ba :: lip-farting :: la la la la :: rrrrrr :: sighing with bird flying and deep-breath) :: in toilet: exercise:Wim hoff(30 strong inhales) + reboot :: social mail.
+DTSTART:%sT024500Z
+DTEND:%sT025900Z
+SUMMARY:Possible to blues-sing about "going up" ; else planned moves in GO :: walk the dog + voice voice worm up -- (sirine i-o :: ba ba ba :: lip-farting :: la la la la :: rrrrrr :: sighing with bird flying and deep-breath) :: in toilet: exercise:Wim hoff(30 strong inhales) + reboot :: social mail :: Prepare diapers for the day :: Check activites at home.
 END:VEVENT
 
 BEGIN:VEVENT
-DTSTART:%sT030000Z
+DTSTART:%sT031500Z
 DTEND:%sT032900Z
 SUMMARY:Charge: I brew coffee/tea and smell it :: II field of view (quadrans), torch test :: III ptosis? :: IV eye: adduct, up :: V gape and bite, clean head, eye, teeth :: VI eye:abduct=look behind :: VII (central and taste:smile, rins cheeks with salt water) ; Grimace - (peripheral: forehead, bottom eyelid, and symptoms as in central) :: VIII balance on one leg :: IX taste tooth brush, tongue blub :: X valsalva maneuver :: XI shrug shoulders :: XII swollow chili  
 END:VEVENT
 
 BEGIN:VEVENT
 DTSTART:%sT033000Z
+DTEND:%sT034500Z
+SUMMARY:Going to bus the station.
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART:%sT040000Z
 DTEND:%sT060000Z
 SUMMARY:20min work/5min tidy ; Charge (read topic from Sammanfattningar -> blog -> list questions -> ask social forum) / Shoot (fix other things)
 END:VEVENT
@@ -97,7 +106,7 @@ DTSTART:%sT200000Z
 DTEND:%sT220000Z
 SUMMARY:Prepare: alarms :: go through the morning routines, what is the first thing I should do in the morning? :: fire meditation :: relax body :: 4-7-8 breathing technique
 END:VEVENT
-""" % (numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers)
+""" % (numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers, numbers)
 
 	#What days to delete
 
