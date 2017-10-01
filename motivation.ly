@@ -151,7 +151,10 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        I a -- nd you \bold build \normal o -- ur va -- lue now. You will get [meaning of end results] from the [res -- ults]. Next do -- ing: [doing the next move]. I ach -- ieve that.
+        Slow brea -- th -- ing for focu -- sed flo -- w now. A -- ppre -- ci -- ate, cri -- ti -- cize, achi -- eve or miss? Id -- en -- ti -- fy -- ing with, or do -- ing ac -- tions?
+        } 
+        \addlyrics {
+        I a -- nd you \bold build \normal o -- ur va -- lue now. You will get [meaning of end results] from the [res -- ults]. To do now: [doing the next move]. I ach -- ieve that.
         } 
       >>  % end ManualOne Staff context
       %%\new Staff = "ManualTwo" \with {
@@ -238,7 +241,7 @@ s1*6^\markup {  }
     \paragraph {\italic{from the [end results]} 
     }\paragraph {Specify the end results. This correlates to serotonine.
     }\vspace #.75
-    \paragraph {\italic{The next move is [the next move]}}
+    \paragraph {\italic{To do now [doing the next move]}}
     \paragraph {This ensures you of the momentum towards the end result. This correlates to acetylocholine.
     }
     \vspace #.75
