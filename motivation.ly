@@ -151,10 +151,10 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        Slow brea -- th -- ing for focu -- sed flo -- w now. A -- ppre -- ci -- ate, cri -- ti -- cize, achi -- eve or miss? Id -- en -- ti -- fy -- ing with, or do -- ing ac -- tions?
+        Slow -- ly bre-- athe for fo -- cused flo -- w now. A -- ppre -- ci -- ate, cri -- ti -- cize, achi -- eve or miss? Id -- en -- ti -- fy -- ing with, or do -- ing ac -- tions?
         } 
         \addlyrics {
-        What do I want to cont -- rib -- ute to now? What would I give to myself that makes me thank -- ful? What would I give to others that make them thank -- ful?
+        What do I want to cont -- rib -- ute to now? Give gifts to my -- self that I'd be thank -- ful for. Give gifts to oth -- ers that can make them thank -- ful.
         } 
         \addlyrics {
         I a -- nd you \bold build \normal o -- ur va -- lue now. You will get [meaning of end results] from the [res -- ults]. To do now: [doing the next move]. I ach -- ieve that.
