@@ -157,7 +157,7 @@ s1*6^\markup {  }
         What do I want to cont -- rib -- ute to now? Give gifts to my -- self that I'd be thank -- ful for. Give gifts to oth -- ers that can make them thank -- ful.
         } 
         \addlyrics {
-        I a -- nd you \bold build \normal o -- ur va -- lue now. You will get [meaning of end results] from the [res -- ults]. To do now: [doing the next move]. I ach -- ieve that.
+        What is my role? What is a fair goal? --- Pla -- y a win win game and --- --- --- --- Ho -- w to pri -- o -- ri -- tize --- --- --- ---.
         } 
       >>  % end ManualOne Staff context
       %%\new Staff = "ManualTwo" \with {
