@@ -151,13 +151,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        Slow -- ly bre-- athe for fo -- cused flo -- w now. A -- ppre -- ci -- ate, cri -- ti -- cize, achi -- eve or miss? Id -- en -- ti -- fy -- ing with, or do -- ing ac -- tions?
-        } 
-        \addlyrics {
-        What do I want to cont -- rib -- ute to now? Give gifts to my -- self that I'd be thank -- ful for. Give gifts to oth -- ers that can make them thank -- ful.
-        } 
-        \addlyrics {
-        What is my role? What is a fair goal? --- Pla -- y a win win game and --- --- --- --- Ho -- w to pri -- o -- ri -- tize --- --- --- ---.
+        What is my role? What is a fai -- r goal? Cre -- ate a win win game and --- --- --- --- Ho -- w to pri -- o -- ri -- tize --- --- --- ---.
         } 
       >>  % end ManualOne Staff context
       %%\new Staff = "ManualTwo" \with {
@@ -199,7 +193,7 @@ s1*6^\markup {  }
 
         }
         \addlyrics {
-        I a -- nd you \bold build \normal o -- ur va -- lue now.
+        What is my role? What is a fai -- r goal?
         }
       >>  % end ManualOne Staff context
       
