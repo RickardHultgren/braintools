@@ -151,7 +151,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        What is my role? What is a fai -- r goal? Cre -- ate a win win game and --- --- --- --- Ho -- w to pri -- o -- ri -- tize --- --- --- ---.
+        What is my role? What is a fai -- r goal? Cre -- ate a win win game now --- --- --- --- Re -- ass -- ay what to do first --- --- --- ---.
         } 
       >>  % end ManualOne Staff context
       %%\new Staff = "ManualTwo" \with {
