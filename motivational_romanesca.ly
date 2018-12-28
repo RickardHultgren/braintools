@@ -123,7 +123,7 @@ s1*6^\markup {  }
     >>
 >>    
 \layout {}
-\midi {\tempo 4 = 140}
+\midi {\tempo 4 = 120}
 }
     
 
