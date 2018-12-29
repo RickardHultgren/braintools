@@ -59,7 +59,7 @@ ManualOneVoiceOneMusic = \relative c' {
 
       
       
-  		e'2 e8 e 
+  		e'4 e4 e8 e 
                 d2.
 		c8 c c4 c8 c
 		b2. 
@@ -104,7 +104,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        [Name]'s role is ---. Then a fair goal is ---. Cre -- ate a win win game. Re -- ass -- ay what to do first.
+        [Name]'s role is to ---. The fair goal is to ---. Cre -- ate a win win game. Re -- ass -- ay what to do first.
         } 
       >>  % end ManualOne Staff context
       %%\new Staff = "ManualTwo" \with {
