@@ -104,7 +104,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        Grate -- ful for the role, [name] has a fair goal. [Name] makes a shared dare. Re -- ass -- ay what to do first.
+        Grate -- ful for the role, [name] has a fair goal. Make a comm -- on dare. Re -- ass -- ay what to do first.
         [Name]'s role is to ---. The fair goal is to ---. Cre -- ate a win win game. Re -- ass -- ay what to do first.
         } 
       >>  % end ManualOne Staff context
