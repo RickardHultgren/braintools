@@ -104,7 +104,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        What I praise and blame, determines my role. Make a mut -- ual dare. Re -- ass -- ay what to do first.
+        What I praise and blame, de -- ter -- mines my role. Make a mut -- ual dare. Re -- ass -- ay what to do first.
         [Name]'s role is to ---. The fair goal is to ---. Cre -- ate a win win game. Re -- ass -- ay what to do first.
         } 
       >>  % end ManualOne Staff context
