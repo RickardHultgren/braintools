@@ -59,11 +59,11 @@ ManualOneVoiceOneMusic = \relative c' {
 
       
       
-  		e'4 e4 e8 e 
+  		e'8 e8 e4 e 
                 d2.
-		c4 c4 c8 c
+		c8 c8 c4 c
 		b2. 
-		c4 c4 c8 c8
+		c8 c8 c4 c
 		b2.
 		a8 a a gis gis gis
                 a2.
