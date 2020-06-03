@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf8"?>
+<FictionBook xmlns="http://www.gribuser.ru/xml/fictionbook/2.0" xmlns:l="http://www.w3.org/1999/xlink">
+ <description>
+  <title-info>
+   <genre>anatomy</genre>
+   <author>
+    <first-name>Rickard Verner</first-name>
+
+    <last-name>Hultgren</last-name>
+   </author>
+   <book-title>My Gnomy</book-title>
+   <lang>en</lang>
+  </title-info>
+ </description>
+ <body>
+  <title>
+   <p>MY GNOMY</p>
+   <p>Rickard Verner Hultgren</p>
+  </title>
+  <section>
+   <title>
+    <p>The Gnomy and the Plant</p>
+   </title>
+   <p>The gnomy has a pot (identity) with soil (fairness) and a bonsai tree in it consisting of trunk and branches (why), flowers (how) and fruits (what).
+   In order to bind the soil the gnomy plants flowers in the soil.
+   Birds are moving into the crown of the tree.
+   </p>
+  </section>
+  <section>
+   <title>
+    <p>The Soil</p>
+    <p>Connecting the pot and roots</p>
+   </title>
+  <p><strong>Flower &amp; bee. The bee wants the nectar from flowers.</strong></p>
+  <p><emphasis>Configurational</emphasis>A braid made of withered flowers next to the beehive.</p><p><emphasis>Release tension</emphasis>       <strong>Flower 1:</strong> A flower stalk that coils around the hive. The bee thinks there's something that wants to destroy the hive, and looks out. The bee then becomes happy to see the flower that unfortunately is closed.</p>
+  <p><emphasis>Ambivalence</emphasis>    <strong>Flower 1:</strong> One by one, the petals fall off and eventually even the middle of the flower.</p>
+  <p><emphasis>Superiority</emphasis>    <strong>Flower 2:</strong> The bee sees a flower outside the hive, and the flower is open. Fast, the bee flies there. Unfortunately, the flower is occupied by another bee that takes up all the place in the flower.</p>
+  <p><emphasis>Incongruity</emphasis> <strong>Flower 3:</strong>    The closed flower begins to vibrate and thinks that there is probably a caterpillar outside that wants to eat me. The flower remains closed, even if it is actually a bee that wants for the nectar.</p><p><emphasis>Recognition</emphasis> <strong>Flower 3:</strong> The bee sees the semiopen flower and is getting ready to fly into it. The bee accelerates and at full speed it slams into the outside of a petal.</p>
+  <p><emphasis>Surprise</emphasis>    <strong>Flower 3:</strong> The bee comes to a flower that sleeps drooping. The bee buzzes a loud fanfare and the flower opens up and looks dizzyawake.</p>
+  <p><emphasis>Embarisement</emphasis>    <strong>Flower 3:</strong> The open flower is embarrassed to have exposed itself. The bee hums gently while slowly and gently flying into the flower.</p>
+  </section>
+
+  <section>   <title>    <p>The Trunk and Branches</p>
+<p>Connecting the roots with the flowers and fruits</p> </title>
+
+<p><strong>The three nutritious (serotonine, dopamine and namdrenalin)
+is moving through the tee trunk. In the tree crown there are eight
+bird nests for each emotion (shame, jay/lust, play, fear, enthusi-
+asm, surprise, panic, rage) of protection! around the tree.</strong></p>
+
+  <p><emphasis>Joy</emphasis>    <strong></strong>satisfied with the situation; A jay is sitting sleeping in its nest.</p>
+  <p><emphasis>Play</emphasis>    <strong></strong>the good situation can get better; An owl is sitting on its branch</p>
+  <p><emphasis>Sadness/fear</emphasis>    <strong></strong>Hopeless/bad; A magpie: is sitting sad on the ground.</p>
+  <p><emphasis>Interest</emphasis>    <strong></strong>Good, but can be even better; Eagle is flying.</p>
+  <p><emphasis>Surprise</emphasis>    <strong></strong>That can be good; A Serbian highflyer pigeon in the air.</p>
+  <p><emphasis>Anger</emphasis>    <strong></strong>It is bad, but it can get better.; Fnlk in the air</p>
+  <p><emphasis>Distress</emphasis>    <strong></strong>It will get worse; Awood packer: on a tree stump.</p>
+  <p><emphasis>Shame</emphasis>    <strong></strong> Dead bird on th ground.</p>
+
+  </section>
+ </body>
+</FictionBook>
