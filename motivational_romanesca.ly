@@ -58,17 +58,18 @@ keyTime = { \key c \major \time 3/4 }
 ManualOneVoiceOneMusic = \relative c' {
 
       
-  		%r2 r4 r8 d'8      
-  		e'8 e8 e4 e 
+  		%r2 r4 r8 d'8
+  		r2 r8 f'8
+  		e8 e8 e4 e 
                 d2 r8 d8
                 c8 c8 c4 c
-                b2.
+                b2 r8 b8
                 %b2 r8 b8
 		c4 c4 c8 c
 		%b2.
 		b2 r8 b8
 		a8 a a gis gis gis
-                a2.
+                a b gis a r8 ||
 
         	
 		
@@ -92,7 +93,7 @@ ManualTwoTwoMusic = \relative c {
 \score {
   <<  % PianoStaff and Pedal Staff must be simultaneous
     \new PianoStaff <<
-      \chords { c2. g2. a2.:m e2. c2. g2. a4.:m e4. a2.:m}
+      \chords { c2. c2. g2. a2.:m e2. c2. g2. a4.:m e4. a2.:m}
       \new Staff = "ManualOne" <<
 \textLengthOn
 s1*6^\markup {  }
@@ -106,6 +107,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
+        You de -- scribe by three words, then ve -- rify and say yes, Ask how to time a push. Your pro -- mise make fee -- lings to which you resp -- ond,
         What I praise and blame, de -- ter -- mines the fair roles. See dares, mu -- tua -- lize, and re -- ass -- ay what to do first.
         [Name]'s role is to ---. The fair goal is to ---. Cre -- ate a win win game. Re -- ass -- ay what to do first.
         } 
@@ -143,4 +145,3 @@ s1*6^\markup {  }
     \vspace #.75
     \paragraph {Imagine an interaction with another person or a future you.}
   }
-
