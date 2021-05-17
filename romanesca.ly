@@ -65,11 +65,11 @@ ManualOneVoiceOneMusic = \relative c' {
                 c8 c8 c4 c
                 b2 r8 b8
                 %b2 r8 b8
-		c4 c4 c8 c
+		c8 c8 c4 c
 		%b2.
 		b2 r8 b8
 		a8 a a gis gis gis
-                a b gis a r8 ||
+                a b gis a4 r8 ||
 
         	
 		
@@ -107,7 +107,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        You de -- scribe by three words, then ve -- rify and say yes, Ask how to time a push. Your pro -- mise make fee -- lings to which you resp -- ond,
+        You de -- scribe by three words, ve -- ri -- fy and say yes, Ask how to time a push. Your pro -- mise make fee -- lings to which you resp -- ond,
         What I praise and blame, de -- ter -- mines the fair roles. See dares, mu -- tua -- lize, and re -- ass -- ay what to do first.
         [Name]'s role is to ---. The fair goal is to ---. Cre -- ate a win win game. Re -- ass -- ay what to do first.
         } 
@@ -130,6 +130,7 @@ s1*6^\markup {  }
 \layout {}
 \midi {\tempo 4 = 120}
 }
+    
     
 
 
