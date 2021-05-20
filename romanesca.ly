@@ -107,7 +107,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        Si -- tua -- tion in three words, co -- nfi -- rma -- tion of views. How to make an imp -- act? Pro -- mi -- ses cause fee -- lings to which you resp -- ond,
+        Si -- tu -- a -- tion of now. Con -- fir -- ma -- tion of views. How to make an imp -- act? Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
         What I praise and blame, de -- ter -- mines the fair roles. See dares, mu -- tua -- lize, and re -- ass -- ay what to do first.
         [Name]'s role is to ---. The fair goal is to ---. Cre -- ate a win win game. Re -- ass -- ay what to do first.
         } 
