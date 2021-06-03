@@ -60,8 +60,8 @@ ManualOneVoiceOneMusic = \relative c' {
       
   		%r2 r4 r8 d'8
   		r2 r8 f'8
-  		e8 e8 e4 e 
-                d2 r8 d8
+  		e8 e e4 e4  
+  		d2 r8 d8
                 c8 c8 c4 c
                 b2 r8 b8
                 %b2 r8 b8
@@ -107,6 +107,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
+        Judge, con -- firm views, com -- pare. Chunk down, rule out 'what ifs'.     Pointing positive     Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
         Si -- tu -- a -- tion of now. Con -- fir -- ma -- tion of views. How to make an imp -- act? Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
         What I praise and blame, de -- ter -- mines the fair roles. See dares, mu -- tua -- lize, and re -- ass -- ay what to do first.
         [Name]'s role is to ---. The fair goal is to ---. Cre -- ate a win win game. Re -- ass -- ay what to do first.
