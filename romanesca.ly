@@ -107,7 +107,7 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        Judge, con -- firm views, com -- pare. Chunk down, rule out 'what ifs'.     Pointing positive     Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
+        Judge, con -- firm views, com -- pare. Chunk down, rule out 'what ifs'.   Point pos -- it -- ive at chall -- ang -- es.    Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
         Si -- tu -- a -- tion of now. Con -- fir -- ma -- tion of views. How to make an imp -- act? Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
         What I praise and blame, de -- ter -- mines the fair roles. See dares, mu -- tua -- lize, and re -- ass -- ay what to do first.
         [Name]'s role is to ---. The fair goal is to ---. Cre -- ate a win win game. Re -- ass -- ay what to do first.
