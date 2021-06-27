@@ -107,7 +107,8 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        Threat, break rule, op -- tions -- close -- ness and con -- firm, com -- pare. Frame, rank, slice, no 'what ifs'. Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
+        Fee -- lings a -- bout what? Why? Threats, flouts. Far ways. con -- firm. Com -- pare, slice, no 'what ifs'. Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
+        Threats, break rules, op -- tions close -- ness and con -- firm, com -- pare. Frame, rank, slice, no 'what ifs'. Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
         Judge opp -- ort -- un -- it -- ies, threats and con -- firm, com -- pare. Frame, rank, slice, no 'what ifs'. Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
         Judge threats, con -- firm, com -- pare. How to man -- age dead -- lines? Chunk down, rule out 'what ifs'. Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
         Si -- tu -- a -- tion of now. Con -- fir -- ma -- tion of views. How to make an imp -- act? Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
@@ -147,5 +148,10 @@ s1*6^\markup {  }
     \vspace #2
     \paragraph { \smallCaps{Comments}}
     \vspace #.75
-    \paragraph {Imagine an interaction with another person or a future you.}
+    \paragraph {Imagine an interaction with another person or a future you. The difference between noradrenaline is time.}
+    \paragraph {1 Promisis cause feelings - are there any feelings? Others decide what I promise.}
+    \paragraph {2 Scan for broken rules and threats - why are there such feelings - ask.}
+    \paragraph {3 Confirm feelings.}
+    \paragraph {4 Compare with your view.}
+    \paragraph {5 Execute by options = framing, closeness/distance=rank, slice and eliminating what ifs.}
   }
