@@ -151,7 +151,8 @@ s1*6^\markup {  }
     \paragraph {Imagine an interaction with another person or a future you. The difference between noradrenaline is time.}
     \paragraph {1 Promisis cause feelings - are there any feelings? Others decide what I promise.}
     \paragraph {2 Scan for broken rules and threats - why are there such feelings - ask.}
-    \paragraph {3 Confirm feelings.}
-    \paragraph {4 Compare with your view.}
-    \paragraph {5 Execute by options = framing, closeness/distance=rank, slice and eliminating what ifs.}
+    \paragraph {3 Confirm $\equiv$ Acknowledge}
+    \paragraph {4 Compare with your view. Compere $\equiv$ normalize}
+    \paragraph {5 REFLECT: Execute by options $=$ framing, closeness/distance=rank, slice into manageble chunks with common goal and eliminating what ifs.}
   }
+  
