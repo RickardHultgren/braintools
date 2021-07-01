@@ -107,7 +107,8 @@ s1*6^\markup {  }
           \bar "||"
         }
         \addlyrics {
-        Fee -- lings a -- bout what? Why? Threats, flouts. Far ways. con -- firm. Com -- pare, slice, no 'what ifs'. Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
+          \set stanza = #"2nd person's perspective: "
+        Fee -- lings a -- bout what? Why? \set stanza = #"Reality: " Threats, flouts. Far ways. con -- firm. \set stanza = #"Execution plan: " Com -- pare, slice, no 'what ifs'. \set stanza = #"1st person showing of intention: " Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
         Threats, break rules, op -- tions close -- ness and con -- firm, com -- pare. Frame, rank, slice, no 'what ifs'. Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
         Judge opp -- ort -- un -- it -- ies, threats and con -- firm, com -- pare. Frame, rank, slice, no 'what ifs'. Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
         Judge threats, con -- firm, com -- pare. How to man -- age dead -- lines? Chunk down, rule out 'what ifs'. Pro -- mi -- ses cause fee -- lings to which you resp -- ond.
@@ -150,9 +151,10 @@ s1*6^\markup {  }
     \vspace #.75
     \paragraph {Imagine an interaction with another person or a future you. The difference between noradrenaline is time.}
     \paragraph {1 Promisis cause feelings - are there any feelings? Others decide what I promise.}
-    \paragraph {2 Scan for broken rules and threats - why are there such feelings - ask.}
-    \paragraph {3 Confirm $\equiv$ Acknowledge}
-    \paragraph {4 Compare with your view. Compere $\equiv$ normalize}
-    \paragraph {5 REFLECT: Execute by options $=$ framing, closeness/distance=rank, slice into manageble chunks with common goal and eliminating what ifs.}
+    \paragraph {2 Why are there such feelings? Ask.}
+    \paragraph {3 Scan for real broken rules and threats}
+    \paragraph {4 Confirm potential threats $\equiv$ Acknowledge}
+    \paragraph {5 Compare with your view and with what is benign. Compere $\equiv$ normalize}
+    \paragraph {6 REFLECT: Execute by options $=$ framing, closeness/distance=rank, slice into manageble chunks with common goal and eliminating what ifs.}
   }
   
