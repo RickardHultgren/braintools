@@ -146,14 +146,20 @@ s1*6^\markup {  }
    (make-justified-lines-markup-list (cons (make-hspace-markup 2) args))))
 
 \markuplist {
-    \vspace #2
+    \vspace #4
     \paragraph { \smallCaps{Comments}}
-    \vspace #.75
+    \vspace #1.5
     \paragraph {Imagine an interaction with another person or a future you. The difference between noradrenaline is time.}
+    \vspace #.75
+    \paragraph {1st person showing of intention}
     \paragraph {1 Promisis cause feelings - are there any feelings? Others decide what I promise.}
     \paragraph {2 Why are there such feelings? Ask.}
+    \vspace #.75
+    \paragraph {2nd person's perspective}
     \paragraph {3 Scan for real broken rules and threats}
     \paragraph {4 Confirm potential threats $\equiv$ Acknowledge}
+    \vspace #.75
+    \paragraph {Execution plan}
     \paragraph {5 Compare with your view and with what is benign. Compere $\equiv$ normalize}
     \paragraph {6 REFLECT: Execute by options $=$ framing, closeness/distance=rank, slice into manageble chunks with common goal and eliminating what ifs.}
   }
