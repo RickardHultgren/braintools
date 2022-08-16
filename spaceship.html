@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html>
+<head>
+<style>
+text.identity{
+transform: translate(74px,0px);
+-ms-transform: translate(74px,0px); /* IE 9 */
+-webkit-transform: translate(74px,0px); /* Safari and Chrome */
+-o-transform: translate(74px,0px); /* Opera */
+-moz-transform: translate(74px,0px); /* Firefox */
+}
+</style>
+</head>
 <body style="background:#000000;">
 
 <svg height="500" width="1000" style="background:#000000;">
   <circle cx="210" cy="210" r="200" stroke="#ff0088" stroke-width="3" fill=none />
-  <circle cx="220" cy="220" r="200" stroke="#ff0088" stroke-width="3" fill=none />
+  <line x1="210" y1="210" x2="410" y2="210" stroke="#ff0088" stroke-width="3" />
+  <line x1="210" y1="210" x2="410" y2="210" stroke="#ff0088" stroke-width="3" />
+
+  <path transform="translate(195,00)"
+        d="M15 6
+           Q 15 6, 25 18
+           A 12.8 12.8 0 1 1 5 18
+           Q 15 6 15 6z"
+
+  fill="#00ff88"
+  stroke="black"
+  stroke-width="0"
+  transform="rotate(-50deg)"
+  transform-origin="top center" 
+  opacity="0.75"/>
+
+  <circle cx="410" cy="210" r="1.5" stroke="#00ff88" stroke-width="3" fill=none />
+  <circle cx="409.5" cy="200" r="1.5" stroke="#00ff88" stroke-width="3" fill=none />
+  <circle cx="210" cy="10" r="1.5" stroke="#00ff88" stroke-width="3" fill=none />
+
+  <circle cx="210" cy="25" r="1.5" stroke="#ffffff" stroke-width="3" fill=none />
+
+  <circle cx="450" cy="210" r="1.5" stroke="#888888" stroke-width="3" fill=none />
+<text x="20" y="20">My text</text>
   Sorry, your browser does not support inline SVG.  
 </svg> 
  
