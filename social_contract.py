@@ -1,46 +1,32 @@
-class Player:
+class TitForTatPlayer:
 	def __init__(self):
-			self.has_opportunity = True
+			self.privilege_available = True
 
-	def tit_for_tat(self, your_previous_action, other_previous_action):
-			if your_previous_action == "cooperate" and other_previous_action == "cooperate":
+	def cooperate_or_defect(self, other_previous_action):
+			if other_previous_action == "defect":
+					self.privilege_available = False
+					return "defect"
+			elif other_previous_action == "cooperate" and self.privilege_available:
 					return "cooperate"
-			elif your_previous_action == "defect" and other_previous_action == "cooperate":
-					self.has_opportunity = False  # Lose the opportunity if defecting
-					return "defect"
-			elif your_previous_action == "cooperate" and other_previous_action == "defect":
-					return "defect"
-			elif your_previous_action == "defect" and other_previous_action == "defect":
-					return "defect"
 			else:
-					return "Invalid actions"
+					return "defect"
 
-	def get_opportunity_status(self):
-			return self.has_opportunity
-
-	def use_opportunity(self):
-			if self.has_opportunity:
-					# Perform task or enjoy the reward associated with the opportunity
-					print("Using the opportunity...")
-					self.has_opportunity = False
-			else:
-					print("No opportunity available.")
 
 # Example usage:
-player1 = Player()
-player2 = Player()
+player = TitForTatPlayer()
 
-# Assume player1 cooperated in the previous round and player2 defected
-# Player1 decides to use the opportunity or perform the task associated with it
-if player1.tit_for_tat("cooperate", "defect") == "cooperate":
-	print("Player1 cooperates.")
-	if player1.get_opportunity_status():
-			player1.use_opportunity()
-	else:
-			print("Player1 lost the opportunity.")
-else:
-	print("Player1 defects.")
-	if player1.get_opportunity_status():
-			player1.use_opportunity()
-	else:
-			print("Player1 lost the opportunity.")
+# Cooperate initially
+your_action = player.cooperate_or_defect("cooperate")
+print("Your action:", your_action)  # Output: cooperate
+
+# Opponent cooperates
+your_action = player.cooperate_or_defect("cooperate")
+print("Your action:", your_action)  # Output: cooperate
+
+# Opponent defects
+your_action = player.cooperate_or_defect("defect")
+print("Your action:", your_action)  # Output: defect
+
+# Subsequent rounds after privilege is lost
+your_action = player.cooperate_or_defect("cooperate")
+print("Your action:", your_action)  # Output: defect
