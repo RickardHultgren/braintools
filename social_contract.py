@@ -1,32 +1,26 @@
-class TitForTatPlayer:
-	def __init__(self):
-			self.privilege_available = True
-
-	def cooperate_or_defect(self, other_previous_action):
-			if other_previous_action == "defect":
-					self.privilege_available = False
-					return "defect"
-			elif other_previous_action == "cooperate" and self.privilege_available:
-					return "cooperate"
-			else:
-					return "defect"
-
+def tit_for_tat(player1_action, player2_action, privilege_lost=False):
+	if player1_action == "cooperate" and player2_action == "cooperate":
+			return "cooperate", privilege_lost
+	elif player1_action == "defect" and player2_action == "cooperate":
+			return "defect", True  # Player1 defects, losing the privilege
+	elif player1_action == "cooperate" and player2_action == "defect":
+			return "defect", False  # Player2 defects, no privilege lost
+	elif player1_action == "defect" and player2_action == "defect":
+			return "defect", False  # Both players defect, no privilege lost
+	else:
+			return "Invalid actions", privilege_lost
 
 # Example usage:
-player = TitForTatPlayer()
+player1_input = input("Player 1's action (cooperate/defect): ").lower()
+player2_input = input("Player 2's action (cooperate/defect): ").lower()
 
-# Cooperate initially
-your_action = player.cooperate_or_defect("cooperate")
-print("Your action:", your_action)  # Output: cooperate
+result, privilege_lost = tit_for_tat(player1_input, player2_input)
 
-# Opponent cooperates
-your_action = player.cooperate_or_defect("cooperate")
-print("Your action:", your_action)  # Output: cooperate
-
-# Opponent defects
-your_action = player.cooperate_or_defect("defect")
-print("Your action:", your_action)  # Output: defect
-
-# Subsequent rounds after privilege is lost
-your_action = player.cooperate_or_defect("cooperate")
-print("Your action:", your_action)  # Output: defect
+if result == "Invalid actions":
+	print("Invalid actions were provided.")
+else:
+	print(f"Player 1's action: {result}")
+	if privilege_lost:
+			print("Player 1 lost the privilege in the social contract due to defection.")
+	else:
+			print("Player 1 maintained the privilege in the social contract.")
