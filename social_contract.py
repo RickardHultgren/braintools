@@ -3,8 +3,6 @@ class SocialContract:
 	def __init__(self, privilege=True):
 		self.privilege = privilege
 
-	# Tit for Tat
-
 	def play_round(self, player1_action, player2_action):
 		if player1_action == "cooperate" and player2_action == "cooperate":
 			return "cooperate", self.privilege
@@ -29,7 +27,9 @@ def main():
 	    input("Enter the number of players (default is 2): ") or "2")
 	players = [SocialContract() for _ in range(num_players)]
 	cooperation = "1"
-
+	need = input("What need should the tas meet?")
+	abilities = input("What abilities do the players have?")
+	contracts = input("What other contracts do frame the task?")
 	task = input("What is the purpose of the social contract?")
 	passed = input("What constitutes a satisfactory outcome?")
 
