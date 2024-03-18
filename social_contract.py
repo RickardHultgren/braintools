@@ -3,8 +3,7 @@ class SocialContract:
 	def __init__(self, privilege=True):
 		self.privilege = privilege
 
-
-#tit for tat
+	# Tit for Tat
 
 	def play_round(self, player1_action, player2_action):
 		if player1_action == "cooperate" and player2_action == "cooperate":
@@ -31,32 +30,37 @@ def main():
 	players = [SocialContract() for _ in range(num_players)]
 	cooperation = "1"
 
-	task = str(input("What is the purpose of the social contract?"))
-	passed = str(input("What constitutes a satisfactory outcome?"))
+	task = input("What is the purpose of the social contract?")
+	passed = input("What constitutes a satisfactory outcome?")
 
 	while True:
 		actions = []
 		if mode == "narcissistic":
-			task = str(
-			    input(
-			        f"The task is: {task} \nDo you want to redefine the task? Then write the new task of the social contract. Otherwise press enter"
-			    ) or task)
-		passed = str(
-		    input(
-		        f"A satisfactory outcome is: {passed} \nDo you want to redefine the that? Then write the new definition. Otherwise press enter"
-		    ) or passed)
+			task = input(
+			    f"The task is: {task} \nDo you want to redefine the task? Then write the new task of the social contract. Otherwise, press enter: "
+			) or task
+			passed = input(
+			    f"A satisfactory outcome is: {passed} \nDo you want to redefine that? Then write the new definition. Otherwise, press enter: "
+			) or passed
+		else:
+			task = input(
+			    f"The task is: {task} \nCheck with the other players if they want to change the task. Otherwise, press enter: "
+			) or task
+			passed = input(
+			    f"A satisfactory outcome is: {passed} \nCheck if the other players want to redefine that? Then write the new definition. Otherwise, press enter: "
+			) or passed
 		for i, player in enumerate(players):
 			if mode == "narcissistic":
 				other_player = "Player 1" if i == 1 else f"Player {i+1}"
-				print("Task:\n\s" % task)
-				print("Expectation:\n\s" % passed)
+				print("Task:\n%s" % task)
+				print("Expectation:\n%s" % passed)
 				action = input(
 				    f"{other_player}, did Player {i+1} achieve satisfactory results in the realm of the social contract? (Type '1' for success or '0' for failure): "
 				)
 			elif i != 1:
 				for j, player in enumerate(players):
-					print("Task:\n\s" % task)
-					print("Expectation:\n\s" % passed)
+					print("Task:\n%s" % task)
+					print("Expectation:\n%s" % passed)
 					action = input(
 					    f"Does Player {i+1} believe that Player {j+1} has achieved satisfactory outcomes within the realm of the social contract? (Type '1' for success or '0' for failure): "
 					)
@@ -71,12 +75,12 @@ def main():
 
 		if any(action != cooperation for action in actions):
 			print("At least one player defected. Cooperation not fulfilled.")
-			#break
+			# break
 
 		if all(action == cooperation for action in actions):
 			print("All players cooperated! Cooperation fulfilled.")
 			print("Player 1, you have a privilege in the social contract.")
-			#break
+			# break
 
 
 if __name__ == "__main__":
