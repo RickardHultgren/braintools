@@ -28,20 +28,23 @@ def main():
 	)
 	num_players = int(
 	    input("Enter the number of players (default is 2): ") or "2")
-	num_decision_makers = int(
-	    input("Enter the number of decision_makers (default is 2): ") or "2")
 	players = [SocialContract() for _ in range(num_players)]
-	decision_makers = [SocialContract() for _ in range(num_decision_makers)]
 	cooperation = "1"
 
 	task = str(input("What is the purpose of the social contract?"))
 	passed = str(input("What constitutes a satisfactory outcome?"))
 
-	previous_result = 0
-	current_result = 0
 	while True:
 		actions = []
-
+		if mode == "narcissistic":
+			task = str(
+			    input(
+			        f"The task is: {task} \nDo you want to redefine the task? Then write the new task of the social contract. Otherwise press enter"
+			    ) or task)
+		passed = str(
+		    input(
+		        f"A satisfactory outcome is: {passed} \nDo you want to redefine the that? Then write the new definition. Otherwise press enter"
+		    ) or passed)
 		for i, player in enumerate(players):
 			if mode == "narcissistic":
 				other_player = "Player 1" if i == 1 else f"Player {i+1}"
@@ -59,7 +62,7 @@ def main():
 					)
 			actions.append(action)
 
-		for i, decision_makers in enumerate(decision_makers):
+		for i, player in enumerate(players):
 			other_player_action = actions[1] if i == 0 else actions[0]
 			action, privilege = player.play_round(actions[i], other_player_action)
 			print(
