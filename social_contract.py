@@ -57,7 +57,7 @@ def main():
 				action = input(
 				    f"{other_player}, did Player {i+1} achieve satisfactory results in the realm of the social contract? (Type '1' for success or '0' for failure): "
 				)
-			elif i != 1:
+			elif i != 0:
 				for j, player in enumerate(players):
 					print("Task:\n%s" % task)
 					print("Expectation:\n%s" % passed)
