@@ -26,19 +26,22 @@ class SocialContract:
 			print("Reflecting on the task and its outcomes...")
 			print("Task of the other person:", task)
 			print("Expectation of the other person:", passed_task)
-			response_cycle = input(
-			    "Where in the story cycle is the other person? (1. awakening, 2. quest, 3. resolution): "
-			)
-			response_construction = input(
-			    "What is the challenge about? (1. norm-break, 2. existential/identity-break, 3. pattern/puzzle): "
-			)
+			response_cycle = int(
+			    input(
+			        "Where in the story cycle is the other person? (1. awakening, 2. quest, 3. resolution): "
+			    ))
+			response_construction = int(
+			    input(
+			        "What is the challenge about? (1. norm-break, 2. existential/identity-break, 3. pattern/puzzle): "
+			    ))
+
 			if response_cycle == 1 and response_construction == 1:
 				print(
-				    "Make a joke with paired phrases structure showing transparency (is used when hopeful about something) (... is like...)."
+				    "Make a joke with paired phrases structure showing transparency (is used when hopeful about something)."
 				)
 			elif response_cycle == 1 and response_construction == 2:
 				print(
-				    "Make an ironic joke about how insignificance one is alone in the group."
+				    "Make an ironic joke about how insignificant one is alone in the group."
 				)
 			elif response_cycle == 1 and response_construction == 3:
 				print(
@@ -46,7 +49,7 @@ class SocialContract:
 				)
 			elif response_cycle == 2 and response_construction == 1:
 				print(
-				    "discover new perspectives (clarity in pitching) with reverse jokes."
+				    "Discover new perspectives (clarity in pitching) with reverse jokes."
 				)
 			elif response_cycle == 2 and response_construction == 2:
 				print(
@@ -62,7 +65,7 @@ class SocialContract:
 				print("Make a joke paradox joke about the new situation.")
 			elif response_cycle == 3 and response_construction == 3:
 				print(
-				    "Show the signiture of a person by a joke with the structure observation and recognition."
+				    "Show the signature of a person by a joke with the structure observation and recognition."
 				)
 
 			new_task = input("Enter a more balanced perspective on the task: ")
@@ -70,7 +73,7 @@ class SocialContract:
 			    "Enter a revised expectation for the task outcome: ")
 			return new_task, new_passed_task
 
-		else:
+		elif mode = "manager":
 			print("Reflecting on the task and its outcomes with other players...")
 			print("Task:", task)
 			print("Expectation:", passed_task)
@@ -106,8 +109,8 @@ class SocialContract:
 
 
 def main():
-	mode = input(
-	    "Enter 'narcissistic' to play in narcissistic mode. Enter 'leader' to play in leader role (managing others' thougts). Otherwise, press enter: "
+	mode = str(input(
+	    "Enter 'narcissistic' to play in narcissistic mode. Enter 'leader' to play in leader role (managing others' thoughts). Otherwise, press enter (manager mode) " or "manager")
 	)
 	num_players = int(
 	    input("Enter the number of players (default is 2): ") or "2")
