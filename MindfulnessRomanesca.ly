@@ -78,8 +78,8 @@ Bee's journey carries on from egg's tender clutch.
             \set chordChanges = ##t % Enable automatic chord changes
             % Chord symbols for each measure
             {
-            c2. | g2. | e | a |
-            c2. | g2. | a4 e2 | a2. |
+            c2. | g2. | a:m | e |
+            c2. | g2. | a4:m e2 | a2. |
             }
         }
     >>

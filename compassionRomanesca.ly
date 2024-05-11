@@ -38,7 +38,7 @@ melodyWithChordsAndLyrics = \relative c' {
             \set chordChanges = ##t % Enable automatic chord changes
             % Chord symbols for each measure
             {
-            c2. | g2. | e | a:m |
+            c2. | g2. | a:m | e |
             c2. | g2. | a4:m e2 | a2. |
             }
         }
