@@ -41,10 +41,9 @@ Expl -- or -- ing the ring's pacts The egg makes,
 the ring change.
 
 \set stanza = #"4. " % Set stanza number for lyrics
-Left hand holds the tender egg's sway,
-Brushes against the right palm's soft glow,
-Seeking mutual expectations in our way,
-Bound by hopes that steadily grow.
+Left wrench holds the ring,
+Brush -- es the right palm's glow,
+ex -- pect 
 
 \set stanza = #"5. " % Set stanza number for lyrics
 Exhale with a hiss, an S-sound's breath,
