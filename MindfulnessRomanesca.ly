@@ -25,8 +25,9 @@ melodyWithChordsAndLyrics = \relative c' {
 
             \set stanza = #"1. " % Set stanza number for lyrics
             Exha -- le,
-            pull visce -- ra,
-            Hear sounds, see colo -- rs,
+            and pause,
+            pull vi -- sce -- ra,
+            Hear sounds, glow,
             Taste scents, feel the skin. 
 
             \set stanza = #"2. " % Set stanza number for lyrics
@@ -34,10 +35,10 @@ melodyWithChordsAndLyrics = \relative c' {
             with ease.
 
             \set stanza = #"3. " % Set stanza number for lyrics
-            Left wrench cradles the fragile egg's weight,
-Touches the right pinky's golden ring,
-Exploring the pacts this object might create,
-Pondering shifts this egg could bring.
+            Left wrench holds the ring,
+Brush -- es the right pi -- nky,
+Expl -- or -- ing the ring's pacts The egg makes,
+the ring change.
 
 \set stanza = #"4. " % Set stanza number for lyrics
 Left hand holds the tender egg's sway,
