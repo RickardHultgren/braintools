@@ -26,7 +26,7 @@ melodyWithChordsAndLyrics = \relative c' {
             \set stanza = #"1. " % Set stanza number for lyrics
             Exha -- le,
             and pause,
-            pull vi -- sce -- ra,
+            draw in vi -- sce -- ra,
             Hear sounds, glow,
             Taste scents, feel the skin. 
 
@@ -35,37 +35,29 @@ melodyWithChordsAndLyrics = \relative c' {
             with ease.
 
             \set stanza = #"3. " % Set stanza number for lyrics
-            Left wrench holds the ring,
-Brush -- es the right pi -- nky,
-Expl -- or -- ing the ring's pacts The egg makes,
+            Left wrench holds the egg,
+Brush -- es the right pink -- y,
+Expl -- or -- ing the ring pacts The egg makes,
 the ring change.
 
 \set stanza = #"4. " % Set stanza number for lyrics
-Left wrench holds the ring,
+Left wrench holds the egg,
 Brush -- es the right palm's glow,
-ex -- pect 
+ex -- pect things that oth -- ers mut -- ually ex -- pext.
 
 \set stanza = #"5. " % Set stanza number for lyrics
-Exhale with a hiss, an S-sound's breath,
-Force out the liver's sigh,
-Determined face, resolve in action,
-Let your will guide, spirits high.
+Exhale with hissing, the li -- ver you push out. Act wirh force! You will guides! The ang -- ger fuels.
 
 \set stanza = #"6. " % Set stanza number for lyrics
-            May you be hap -- py; May all be health -- y; May you be safe; May you live
+            May you be hap -- py; May you be health -- y; May you be safe; May you live
             with ease.
 
 \set stanza = #"7. " % Set stanza number for lyrics
-The egg shifts from left to right,
-Transforms in the right's gentle care,
-Emerging as a bright larva's light,
-Brushing the palm with grace so rare.
+The egg shifts left to right,
+and trans -- forms in -- to a lar -- va that you brush ag -- ainst the left palm.
 
 \set stanza = #"8. " % Set stanza number for lyrics
-The larva meets the left pinky's gentle touch,
-Embracing change, responsibility as such.
-Inhale, smile, heart's warm embrace so much,
-Bee's journey carries on from egg's tender clutch.
+The right wrench holds the lar -- va brush -- es the left pinky. Say duties, in -- hale into the heart! Lar -- va is a bee.
 
 \set stanza = #"9. " % Set stanza number for lyrics
             May I be hap -- py; May I be health -- y; May I be safe; May I live
