@@ -175,5 +175,5 @@ The right wrench holds_the lar -- va brushes the left pink -- y. Say dut -- ies,
     \vspace #2
     \paragraph { \smallCaps{Comments}}
     \vspace #.75
-    \paragraph {When expressing wishes for happiness, health, and safety, depict the recipient's hands with specific colors: the thumb glowing cyan for happiness, the palm and back of the hands glowing orange for health, and the pinky finger glowing magenta for safety.}
+    \paragraph {Before acting on an object, consider what the object is and who will be affected by it. Transform the object into a gift while singing this song. When expressing wishes for happiness, health, and safety, depict the recipient's hands with specific colors: the thumb glowing cyan for happiness, the palm and back of the hands glowing orange for health, and the pinky finger glowing magenta for safety.}
   }
