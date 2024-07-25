@@ -1,174 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-		<meta charset="UTF-8">
-		<title>Flow Chart</title>
-		<script src="https://d3js.org/d3.v7.min.js"></script>
-		<style>
-				.node {
-						stroke: #000;
-						stroke-width: 1.5px;
-				}
-				.sub-node {
-						stroke: #000;
-						stroke-width: 1px;
-				}
-				.arrow {
-						fill: none;
-						stroke: black;
-						stroke-width: 2px;
-						marker-end: url(#arrowhead);
-				}
-		</style>
+    <meta charset="UTF-8">
+    <title>Expandable Flow Chart</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .node {
+            stroke: #000;
+            stroke-width: 1.5px;
+        }
+        .sub-node, .sub-sub-node {
+            stroke: #000;
+            stroke-width: 1px;
+        }
+        .arrow {
+            fill: none;
+            stroke: black;
+            stroke-width: 2px;
+            marker-end: url(#arrowhead);
+        }
+        .close {
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-		<svg width="600" height="400"></svg>
-		<script>
-				const svg = d3.select("svg");
-				const width = +svg.attr("width");
-				const height = +svg.attr("height");
+    <svg width="800" height="600"></svg>
+    <script>
+        const svg = d3.select("svg");
+        const width = +svg.attr("width");
+        const height = +svg.attr("height");
 
-				// Define arrowhead marker
-				svg.append("defs").append("marker")
-						.attr("id", "arrowhead")
-						.attr("viewBox", "0 -5 10 10")
-						.attr("refX", 5)
-						.attr("refY", 0)
-						.attr("markerWidth", 6)
-						.attr("markerHeight", 6)
-						.attr("orient", "auto")
-						.append("path")
-						.attr("d", "M0,-5L10,0L0,5")
-						.attr("fill", "black");
+        // Define arrowhead marker
+        svg.append("defs").append("marker")
+            .attr("id", "arrowhead")
+            .attr("viewBox", "0 -5 10 10")
+            .attr("refX", 5)
+            .attr("refY", 0)
+            .attr("markerWidth", 6)
+            .attr("markerHeight", 6)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M0,-5L10,0L0,5")
+            .attr("fill", "black");
 
-				const nodes = [
-						{ id: 1, x: width / 4, y: height / 2, r: 20 },
-						{ id: 2, x: width / 2, y: height / 2, r: 20 },
-						{ id: 3, x: (3 * width) / 4, y: height / 2, r: 20 }
-				];
+        const nodes = [
+            { id: 1, x: width / 4, y: height / 2, width: 40, height: 40, collapsed: true },
+            { id: 2, x: width / 2, y: height / 2, width: 40, height: 40, collapsed: true, subNodes: [
+                { id: "2.1", x: width / 2 - 30, y: height / 2, width: 40, height: 40, collapsed: true, subNodes: [
+                    { id: "2.1.1", x: width / 2 - 30, y: height / 2, width: 40, height: 40 },
+                    { id: "2.1.2", x: width / 2 + 30, y: height / 2, width: 40, height: 40 }
+                ]},
+                { id: "2.2", x: width / 2 + 30, y: height / 2, width: 40, height: 40 }
+            ]},
+            { id: 3, x: (3 * width) / 4, y: height / 2, width: 40, height: 40, collapsed: true }
+        ];
 
-				const links = [
-						{ source: nodes[0], target: nodes[1] },
-						{ source: nodes[1], target: nodes[2] }
-				];
+        const links = [
+            { source: nodes[0], target: nodes[1] },
+            { source: nodes[1], target: nodes[2] }
+        ];
 
-				// Draw arrows
-				svg.selectAll(".arrow")
-						.data(links)
-						.enter()
-						.append("line")
-						.attr("class", "arrow")
-						.attr("x1", d => d.source.x)
-						.attr("y1", d => d.source.y)
-						.attr("x2", d => d.target.x)
-						.attr("y2", d => d.target.y);
+        // Draw arrows
+        svg.selectAll(".arrow")
+            .data(links)
+            .enter()
+            .append("line")
+            .attr("class", "arrow")
+            .attr("x1", d => d.source.x + d.source.width / 2)
+            .attr("y1", d => d.source.y)
+            .attr("x2", d => d.target.x - d.target.width / 2)
+            .attr("y2", d => d.target.y);
 
-				const nodeGroup = svg.selectAll("g")
-						.data(nodes)
-						.enter()
-						.append("g")
-						.attr("class", "node")
-						.on("click", expandNode);
+        const nodeGroup = svg.selectAll("g")
+            .data(nodes)
+            .enter()
+            .append("g")
+            .attr("class", "node")
+            .on("click", expandNode);
 
-				nodeGroup.append("circle")
-						.attr("cx", d => d.x)
-						.attr("cy", d => d.y)
-						.attr("r", d => d.r)
-						.attr("fill", "lightblue");
+        nodeGroup.append("rect")
+            .attr("x", d => d.x - d.width / 2)
+            .attr("y", d => d.y - d.height / 2)
+            .attr("width", d => d.width)
+            .attr("height", d => d.height)
+            .attr("fill", "lightblue");
 
-				nodeGroup.append("text")
-						.attr("x", d => d.x)
-						.attr("y", d => d.y + 4)
-						.attr("text-anchor", "middle")
-						.text(d => d.id);
+        nodeGroup.append("text")
+            .attr("x", d => d.x)
+            .attr("y", d => d.y + 6)
+            .attr("text-anchor", "middle")
+            .text(d => d.id);
 
-				function expandNode(event, d) {
-						if (d.id === 2) {
-								// Remove the existing node 2
-								d3.select(this).remove();
+        function expandNode(event, d) {
+            if (d.collapsed) {
+                d.collapsed = false;
+                render();
+            }
+        }
 
-								// Add the expanded node 2
-								svg.append("circle")
-										.attr("cx", d.x)
-										.attr("cy", d.y)
-										.attr("r", 60)
-										.attr("fill", "lightblue");
+        function collapseNode(d) {
+            d.collapsed = true;
+            collapseSubNodes(d);
+            render();
+        }
 
-								svg.append("text")
-										.attr("x", d.x)
-										.attr("y", d.y + 4)
-										.attr("text-anchor", "middle")
-										.attr("font-size", "20px")
-										.text(d.id);
+        function collapseSubNodes(node) {
+            if (node.subNodes) {
+                node.subNodes.forEach(subNode => {
+                    subNode.collapsed = true;
+                    collapseSubNodes(subNode);
+                });
+            }
+        }
 
-								// Add nodes 2.1 and 2.2 inside the expanded node 2
-								const subNodes = [
-										{ id: "2.1", x: d.x - 20, y: d.y, r: 10 },
-										{ id: "2.2", x: d.x + 20, y: d.y, r: 10 }
-								];
+        function render() {
+            svg.selectAll("g.node").remove();
 
-								const subNodeGroup = svg.selectAll(".sub-node")
-										.data(subNodes)
-										.enter()
-										.append("g")
-										.attr("class", "sub-node")
-										.on("click", expandSubNode);
+            const nodeGroup = svg.selectAll("g.node")
+                .data(nodes)
+                .enter()
+                .append("g")
+                .attr("class", "node")
+                .on("click", (event, d) => {
+                    event.stopPropagation();
+                    if (d.collapsed) {
+                        expandNode(event, d);
+                    } else {
+                        collapseNode(d);
+                    }
+                });
 
-								subNodeGroup.append("circle")
-										.attr("cx", d => d.x)
-										.attr("cy", d => d.y)
-										.attr("r", d => d.r)
-										.attr("fill", "lightgreen");
+            nodeGroup.append("rect")
+                .attr("x", d => d.x - d.width / 2)
+                .attr("y", d => d.y - d.height / 2)
+                .attr("width", d => d.width)
+                .attr("height", d => d.height)
+                .attr("fill", d => d.collapsed ? "lightblue" : "lightgreen");
 
-								subNodeGroup.append("text")
-										.attr("x", d => d.x)
-										.attr("y", d => d.y + 4)
-										.attr("text-anchor", "middle")
-										.text(d => d.id);
-						}
-				}
+            nodeGroup.append("text")
+                .attr("x", d => d.x)
+                .attr("y", d => d.y + 6)
+                .attr("text-anchor", "middle")
+                .text(d => d.id);
 
-				function expandSubNode(event, d) {
-						if (d.id === "2.1") {
-								// Remove the existing node 2.1
-								d3.select(this).remove();
+            nodeGroup.each(function (d) {
+                if (!d.collapsed && d.subNodes) {
+                    const subNodeGroup = d3.select(this).selectAll(".sub-node")
+                        .data(d.subNodes)
+                        .enter()
+                        .append("g")
+                        .attr("class", "sub-node")
+                        .on("click", (event, subD) => {
+                            event.stopPropagation();
+                            if (subD.collapsed) {
+                                subD.collapsed = false;
+                                render();
+                            } else {
+                                subD.collapsed = true;
+                                collapseSubNodes(subD);
+                                render();
+                            }
+                        });
 
-								// Add the expanded node 2.1
-								svg.append("circle")
-										.attr("cx", d.x)
-										.attr("cy", d.y)
-										.attr("r", 30)
-										.attr("fill", "lightgreen");
+                    subNodeGroup.append("rect")
+                        .attr("x", subD => subD.x - subD.width / 2)
+                        .attr("y", subD => subD.y - subD.height / 2)
+                        .attr("width", subD => subD.width)
+                        .attr("height", subD => subD.height)
+                        .attr("fill", "lightgreen");
 
-								svg.append("text")
-										.attr("x", d.x)
-										.attr("y", d.y + 4)
-										.attr("text-anchor", "middle")
-										.attr("font-size", "15px")
-										.text(d.id);
+                    subNodeGroup.append("text")
+                        .attr("x", subD => subD.x)
+                        .attr("y", subD => subD.y + 6)
+                        .attr("text-anchor", "middle")
+                        .text(subD => subD.id);
 
-								// Add node 2.1.1 inside the expanded node 2.1
-								const subSubNode = { id: "2.1.1", x: d.x, y: d.y, r: 10 };
+                    subNodeGroup.each(function (subD) {
+                        if (!subD.collapsed && subD.subNodes) {
+                            const subSubNodeGroup = d3.select(this).selectAll(".sub-sub-node")
+                                .data(subD.subNodes)
+                                .enter()
+                                .append("g")
+                                .attr("class", "sub-sub-node");
 
-								const subSubNodeGroup = svg.selectAll(".sub-sub-node")
-										.data([subSubNode])
-										.enter()
-										.append("g")
-										.attr("class", "sub-sub-node");
+                            subSubNodeGroup.append("rect")
+                                .attr("x", subSubD => subSubD.x - subSubD.width / 2)
+                                .attr("y", subSubD => subSubD.y - subSubD.height / 2)
+                                .attr("width", subSubD => subSubD.width)
+                                .attr("height", subSubD => subSubD.height)
+                                .attr("fill", "lightyellow");
 
-								subSubNodeGroup.append("circle")
-										.attr("cx", d => d.x)
-										.attr("cy", d => d.y)
-										.attr("r", d => d.r)
-										.attr("fill", "lightyellow");
+                            subSubNodeGroup.append("text")
+                                .attr("x", subSubD => subSubD.x)
+                                .attr("y", subSubD => subSubD.y + 4)
+                                .attr("text-anchor", "middle")
+                                .text(subSubD => subSubD.id);
+                        }
+                    });
 
-								subSubNodeGroup.append("text")
-										.attr("x", d => d.x)
-										.attr("y", d => d.y + 4)
-										.attr("text-anchor", "middle")
-										.text(d => d.id);
-						}
-				}
-		</script>
+                    d3.select(this).append("text")
+                        .attr("x", d.x + 60 / 2 - 12)
+                        .attr("y", d.y - 60 / 2 + 12)
+                        .attr("text-anchor", "middle")
+                        .attr("class", "close")
+                        .text("x")
+                        .on("click", (event) => {
+                            event.stopPropagation();
+                            collapseNode(d);
+                        });
+                }
+            });
+        }
+
+        render();
+    </script>
 </body>
 </html>
