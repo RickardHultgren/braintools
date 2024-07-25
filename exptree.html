@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="UTF-8">
+		<title>Flow Chart</title>
+		<script src="https://d3js.org/d3.v7.min.js"></script>
+		<style>
+				.node {
+						stroke: #000;
+						stroke-width: 1.5px;
+				}
+				.sub-node {
+						stroke: #000;
+						stroke-width: 1px;
+				}
+				.arrow {
+						fill: none;
+						stroke: black;
+						stroke-width: 2px;
+						marker-end: url(#arrowhead);
+				}
+		</style>
+</head>
+<body>
+		<svg width="600" height="400"></svg>
+		<script>
+				const svg = d3.select("svg");
+				const width = +svg.attr("width");
+				const height = +svg.attr("height");
+
+				// Define arrowhead marker
+				svg.append("defs").append("marker")
+						.attr("id", "arrowhead")
+						.attr("viewBox", "0 -5 10 10")
+						.attr("refX", 5)
+						.attr("refY", 0)
+						.attr("markerWidth", 6)
+						.attr("markerHeight", 6)
+						.attr("orient", "auto")
+						.append("path")
+						.attr("d", "M0,-5L10,0L0,5")
+						.attr("fill", "black");
+
+				const nodes = [
+						{ id: 1, x: width / 4, y: height / 2, r: 20 },
+						{ id: 2, x: width / 2, y: height / 2, r: 20 },
+						{ id: 3, x: (3 * width) / 4, y: height / 2, r: 20 }
+				];
+
+				const links = [
+						{ source: nodes[0], target: nodes[1] },
+						{ source: nodes[1], target: nodes[2] }
+				];
+
+				// Draw arrows
+				svg.selectAll(".arrow")
+						.data(links)
+						.enter()
+						.append("line")
+						.attr("class", "arrow")
+						.attr("x1", d => d.source.x)
+						.attr("y1", d => d.source.y)
+						.attr("x2", d => d.target.x)
+						.attr("y2", d => d.target.y);
+
+				const nodeGroup = svg.selectAll("g")
+						.data(nodes)
+						.enter()
+						.append("g")
+						.attr("class", "node")
+						.on("click", expandNode);
+
+				nodeGroup.append("circle")
+						.attr("cx", d => d.x)
+						.attr("cy", d => d.y)
+						.attr("r", d => d.r)
+						.attr("fill", "lightblue");
+
+				nodeGroup.append("text")
+						.attr("x", d => d.x)
+						.attr("y", d => d.y + 4)
+						.attr("text-anchor", "middle")
+						.text(d => d.id);
+
+				function expandNode(event, d) {
+						if (d.id === 2) {
+								// Remove the existing node 2
+								d3.select(this).remove();
+
+								// Add the expanded node 2
+								svg.append("circle")
+										.attr("cx", d.x)
+										.attr("cy", d.y)
+										.attr("r", 60)
+										.attr("fill", "lightblue");
+
+								svg.append("text")
+										.attr("x", d.x)
+										.attr("y", d.y + 4)
+										.attr("text-anchor", "middle")
+										.attr("font-size", "20px")
+										.text(d.id);
+
+								// Add nodes 2.1 and 2.2 inside the expanded node 2
+								const subNodes = [
+										{ id: "2.1", x: d.x - 20, y: d.y, r: 10 },
+										{ id: "2.2", x: d.x + 20, y: d.y, r: 10 }
+								];
+
+								const subNodeGroup = svg.selectAll(".sub-node")
+										.data(subNodes)
+										.enter()
+										.append("g")
+										.attr("class", "sub-node")
+										.on("click", expandSubNode);
+
+								subNodeGroup.append("circle")
+										.attr("cx", d => d.x)
+										.attr("cy", d => d.y)
+										.attr("r", d => d.r)
+										.attr("fill", "lightgreen");
+
+								subNodeGroup.append("text")
+										.attr("x", d => d.x)
+										.attr("y", d => d.y + 4)
+										.attr("text-anchor", "middle")
+										.text(d => d.id);
+						}
+				}
+
+				function expandSubNode(event, d) {
+						if (d.id === "2.1") {
+								// Remove the existing node 2.1
+								d3.select(this).remove();
+
+								// Add the expanded node 2.1
+								svg.append("circle")
+										.attr("cx", d.x)
+										.attr("cy", d.y)
+										.attr("r", 30)
+										.attr("fill", "lightgreen");
+
+								svg.append("text")
+										.attr("x", d.x)
+										.attr("y", d.y + 4)
+										.attr("text-anchor", "middle")
+										.attr("font-size", "15px")
+										.text(d.id);
+
+								// Add node 2.1.1 inside the expanded node 2.1
+								const subSubNode = { id: "2.1.1", x: d.x, y: d.y, r: 10 };
+
+								const subSubNodeGroup = svg.selectAll(".sub-sub-node")
+										.data([subSubNode])
+										.enter()
+										.append("g")
+										.attr("class", "sub-sub-node");
+
+								subSubNodeGroup.append("circle")
+										.attr("cx", d => d.x)
+										.attr("cy", d => d.y)
+										.attr("r", d => d.r)
+										.attr("fill", "lightyellow");
+
+								subSubNodeGroup.append("text")
+										.attr("x", d => d.x)
+										.attr("y", d => d.y + 4)
+										.attr("text-anchor", "middle")
+										.text(d => d.id);
+						}
+				}
+		</script>
+</body>
+</html>
