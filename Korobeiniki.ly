@@ -2,7 +2,7 @@
 
 % Define the global score structure
 global = {
-		\key a \minor % Key of A minor
+		\key c \minor % Key of C minor
 		\time 4/4 % Time signature 4/4
 		%\tempo 4 = 160 % Set tempo to Allegro (160 BPM)
 }
@@ -10,17 +10,18 @@ global = {
 % Define the melody and chords with lyrics
 melodyWithChordsAndLyrics = \relative c' {
 		\global
-
+		\set Score.finalFineTextVisibility = ##t
 		% Define the melody with lyrics and chords
 		<<
 				\new Voice = "melody" {
 						\voiceOne % Use voiceOne for melody
+						
 						{
-								% First phrase: Korobeiniki (Korobushka) melody in A minor
-								c'4 g8 a b4 a8 g | c4 b a g | f8. e16 f8 g | a4 a4 |
-								e4 a8. b16 | c4 b a g | f8. e16 f8 g | a4 a4 |
-								a'4 g f e | d c b a | a' g f e | d c b a |
-								e' d c b | c8 a b4 | a8. b16 c4 b a g | f8. e16 f8 g | a4 a4 ||
+								% First phrase: Korobeiniki (Korobushka) melody in C minor
+								\repeat volta 2 {g'4 d8 ees f4 ees8 d | c4 c8 ees g4 f8 ees | d4 d8 ees f4 g |
+								ees c c r | r8 f4 aes8 c4 bes8 aes | g4. ees8 g4 f8 ees8 | d4 d8 ees f4 g |
+								ees4 c c r | g'2 ees | f d | ees c |
+								b d | g ees | f d | ees4 g c c | b1 |} 
 						}
 				}
 				\new Lyrics \lyricsto melody {
@@ -46,10 +47,10 @@ melodyWithChordsAndLyrics = \relative c' {
 						\set chordChanges = ##t % Enable automatic chord changes
 						% Chord symbols for each measure
 						{
-								c | f b e a | d g c f | b e a a |
-								a4 d g c | f b e a | d g c f | b e a a |
-								a d g c | f b e a | d g c f | b e a a |
-								a d g c | f b e a | d g c f | b e a a ||
+								g1 | c1 | g1 | c1 |
+								f1 | c1 | g1 | c1 |
+								c1 | g1 | c1 | g1 |
+								c1 | g1 | c1 | g1 |
 						}
 				}
 		>>
@@ -65,6 +66,8 @@ melodyWithChordsAndLyrics = \relative c' {
 		\header {
 				title = "Korobeiniki"
 				composer = "Traditional"
+				key = "C minor"
+				time = "4/4"
 		}
 
 		\layout { } % Hide LilyPond layout settings
