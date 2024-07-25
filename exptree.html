@@ -58,6 +58,7 @@
             { id: 3, x: (3 * width) / 4, y: height / 2, width: 40, height: 40, collapsed: true }
         ];
 
+			//sub-nodes links?
         const links = [
             { source: nodes[0], target: nodes[1] },
             { source: nodes[1], target: nodes[2] }
@@ -201,16 +202,7 @@
                         }
                     });
 
-                    d3.select(this).append("text")
-                        .attr("x", d.x + 60 / 2 - 12)
-                        .attr("y", d.y - 60 / 2 + 12)
-                        .attr("text-anchor", "middle")
-                        .attr("class", "close")
-                        .text("x")
-                        .on("click", (event) => {
-                            event.stopPropagation();
-                            collapseNode(d);
-                        });
+
                 }
             });
         }
