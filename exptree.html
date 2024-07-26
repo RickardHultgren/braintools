@@ -46,16 +46,19 @@
             .attr("d", "M0,-5L10,0L0,5")
             .attr("fill", "black");
 
+			//sort main nodes with start:true
+			//sort sort rest of main nodes
+			//
         const nodes = [
-            { id: 1, x: width / 4, y: height / 2, width: 40, height: 40, collapsed: true },
-            { id: 2, x: width / 2, y: height / 2, width: 40, height: 40, collapsed: true, subNodes: [
-                { id: "2.1", x: width / 2 - 30, y: height / 2, width: 40, height: 40, collapsed: true, subNodes: [
-                    { id: "2.1.1", x: width / 2 - 30, y: height / 2, width: 40, height: 40 },
-                    { id: "2.1.2", x: width / 2 + 30, y: height / 2, width: 40, height: 40 }
+            { id: 1, start: true, x: width / 4, y: height / 2, width: 40, height: 40, collapsed: true },
+            { id: 2, start: false, x: width / 2, y: height / 2, width: 40, height: 40, collapsed: true, subNodes: [
+                { id: "2.1", start: true, x: width / 2 - 30, y: height / 2, width: 40, height: 40, collapsed: true, subNodes: [
+                    { id: "2.1.1", start: true, x: width / 2 - 30, y: height / 2, width: 40, height: 40 },
+                    { id: "2.1.2", start: false, x: width / 2 + 30, y: height / 2, width: 40, height: 40 }
                 ]},
-                { id: "2.2", x: width / 2 + 30, y: height / 2, width: 40, height: 40 }
+                { id: "2.2", start: false, x: width / 2 + 30, y: height / 2, width: 40, height: 40 }
             ]},
-            { id: 3, x: (3 * width) / 4, y: height / 2, width: 40, height: 40, collapsed: true }
+            { id: 3, start: false, x: (3 * width) / 4, y: height / 2, width: 40, height: 40, collapsed: true }
         ];
 
 			//sub-nodes links?
