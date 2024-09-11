@@ -104,8 +104,8 @@ class _MeditationGuideState extends State<MeditationGuide> {
 										'Exhale, Be Strong - Emotions to me belong.'
 										'Inhale and Say - "May emotions bring joy each day.'),
 						child: Text(isPlaying
-								? 'Stop TTS'
-								: 'Start TTS'),
+								? '\u23F9 TTS'
+								: '\u23F5 TTS'),
 						style: ElevatedButton.styleFrom(
 							foregroundColor: const Color(0xaa000000),
 							backgroundColor: isPlaying ? const Color(0xffff0000) : const Color(0xff555555),
@@ -130,7 +130,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
 										'Inhale with mirrors in sight, and crystal balls alight. '
 										'Exhale with Might - Determination in sight.'
 										'Inhale and say - "Acceptance makes health stay."'),
-						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
+						child: Text(isPlaying ? '\u23F9 TTS' : '\u23F5 TTS'),
 						style: ElevatedButton.styleFrom(
 							foregroundColor: const Color(0xaa000000),
 							backgroundColor: isPlaying ? const Color(0xffff0000) : const Color(0xff555555),
@@ -155,7 +155,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
 										'Inhale with mirrors in sight, and crystal balls alight.'
 										'Exhale, Embrace - the new with grace.'
 										'Inhale and Plea - "May I live in peace with me."'),
-						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
+						child: Text(isPlaying ? '\u23F9 TTS' : '\u23F5 TTS'),
 						style: ElevatedButton.styleFrom(
 							foregroundColor: const Color(0xaa000000),
 							backgroundColor: isPlaying ? const Color(0xffff0000) : const Color(0xff555555),
@@ -177,7 +177,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
 					ElevatedButton(
 						onPressed: () => _toggleTTS(
 								'What destination do you want to review? What path of ours will guide you through?'),
-						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
+						child: Text(isPlaying ? '\u23F9 TTS' : '\u23F5 TTS'),
 						style: ElevatedButton.styleFrom(
 							foregroundColor: const Color(0xaa000000),
 							backgroundColor: isPlaying ? const Color(0xffff0000) : const Color(0xff555555),
@@ -199,13 +199,12 @@ class _MeditationGuideState extends State<MeditationGuide> {
 					ElevatedButton(
 						onPressed: () => _toggleTTS(
 								'In troll’s mirror, pains remain. In Fairy’s ball, we seek our gain.'),
-						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
+						child: Text(isPlaying ? '\u23F9 TTS' : '\u23F5 TTS'),
 						style: ElevatedButton.styleFrom(
 							foregroundColor: const Color(0xaa000000),
 							backgroundColor: isPlaying ? const Color(0xffff0000) : const Color(0xff555555),
 						),
 					),
-					SizedBox(height: 20),
 					RichText(
 						text: TextSpan(
 							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
@@ -217,16 +216,16 @@ class _MeditationGuideState extends State<MeditationGuide> {
 							],
 						),
 					),
+					SizedBox(height: 20),
 					ElevatedButton(
 						onPressed: () => _toggleTTS(
 								'A chance to grow, to learn, and gain,\nfrom each experience, not in vain.'),
-						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
+						child: Text(isPlaying ? '\u23F9 TTS' : '\u23F5 TTS'),
 						style: ElevatedButton.styleFrom(
 							foregroundColor: const Color(0xaa000000),
 							backgroundColor: isPlaying ? const Color(0xffff0000) : const Color(0xff555555),
 						),
 					),
-					SizedBox(height: 20),
 					RichText(
 						text: TextSpan(
 							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
