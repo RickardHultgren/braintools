@@ -19,10 +19,13 @@
             stroke-width: 2px;
             marker-end: url(#arrowhead);
         }
-        .close {
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
+        .node-rect {
+            fill: lightblue;
+        }
+        .expanded-rect {
+            fill: lightgray;
+            stroke: #000;
+            stroke-width: 2px;
         }
     </style>
 </head>
@@ -46,68 +49,199 @@
             .attr("d", "M0,-5L10,0L0,5")
             .attr("fill", "black");
 
-			//sort main nodes with start:true
-			//sort sort rest of main nodes
-			//
         const nodes = [
-            { id: 1, start: true, x: width / 4, y: height / 2, width: 40, height: 40, collapsed: true },
-            { id: 2, start: false, x: width / 2, y: height / 2, width: 40, height: 40, collapsed: true, subNodes: [
-                { id: "2.1", start: true, x: width / 2 - 30, y: height / 2, width: 40, height: 40, collapsed: true, subNodes: [
-                    { id: "2.1.1", start: true, x: width / 2 - 30, y: height / 2, width: 40, height: 40 },
-                    { id: "2.1.2", start: false, x: width / 2 + 30, y: height / 2, width: 40, height: 40 }
+            { id: 1, start: true, width: 40, height: 40, collapsed: true },
+            { id: 2, start: false, width: 40, height: 40, collapsed: true, subNodes: [
+                { id: "2.1", start: true, width: 40, height: 40, collapsed: true, subNodes: [
+                    { id: "2.1.1", start: true, width: 40, height: 40 },
+                    { id: "2.1.2", start: false, width: 40, height: 40 }
                 ]},
-                { id: "2.2", start: false, x: width / 2 + 30, y: height / 2, width: 40, height: 40 }
+                { id: "2.2", start: false, width: 40, height: 40 }
             ]},
-            { id: 3, start: false, x: (3 * width) / 4, y: height / 2, width: 40, height: 40, collapsed: true }
+            { id: 3, start: false, width: 40, height: 40, collapsed: true }
         ];
 
-			//sub-nodes links?
         const links = [
             { source: nodes[0], target: nodes[1] },
             { source: nodes[1], target: nodes[2] }
         ];
 
+        // Assign layers
+        function assignLayers(nodes) {
+            let layer = 0;
+            nodes.forEach(node => {
+                node.layer = layer;
+                if (node.subNodes) {
+                    assignLayersRecursive(node.subNodes, layer + 1);
+                }
+            });
+        }
+
+        function assignLayersRecursive(subNodes, layer) {
+            subNodes.forEach(node => {
+                node.layer = layer;
+                if (node.subNodes) {
+                    assignLayersRecursive(node.subNodes, layer + 1);
+                }
+            });
+        }
+
+        assignLayers(nodes);
+
+        // Position nodes based on their layer
+        function positionNodes(nodes) {
+            const layerWidth = width / (d3.max(nodes, d => d.layer) + 1);
+            const layerHeight = 100;
+            nodes.forEach((node, i) => {
+                node.x = layerWidth * node.layer + layerWidth / 2;
+                node.y = layerHeight * (i + 1);
+                if (node.subNodes) {
+                    positionSubNodes(node.subNodes, node.x, node.y, layerHeight);
+                }
+            });
+        }
+
+        function positionSubNodes(subNodes, parentX, parentY, layerHeight) {
+            const subNodeWidth = 100; // Width between nodes
+            subNodes.forEach((node, i) => {
+                node.x = parentX + (i - subNodes.length / 2) * subNodeWidth;
+                node.y = parentY + layerHeight;
+                if (node.subNodes) {
+                    positionSubNodes(node.subNodes, node.x, node.y, layerHeight);
+                }
+            });
+        }
+
+        positionNodes(nodes);
+
         // Draw arrows
-        svg.selectAll(".arrow")
-            .data(links)
-            .enter()
-            .append("line")
-            .attr("class", "arrow")
-            .attr("x1", d => d.source.x + d.source.width / 2)
-            .attr("y1", d => d.source.y)
-            .attr("x2", d => d.target.x - d.target.width / 2)
-            .attr("y2", d => d.target.y);
+        function drawArrows() {
+            svg.selectAll(".arrow").remove();
 
-        const nodeGroup = svg.selectAll("g")
-            .data(nodes)
-            .enter()
-            .append("g")
-            .attr("class", "node")
-            .on("click", expandNode);
+            svg.selectAll(".arrow")
+                .data(links)
+                .enter()
+                .append("line")
+                .attr("class", "arrow")
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y + d.source.height / 2)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y - d.target.height / 2);
+        }
 
-        nodeGroup.append("rect")
-            .attr("x", d => d.x - d.width / 2)
-            .attr("y", d => d.y - d.height / 2)
-            .attr("width", d => d.width)
-            .attr("height", d => d.height)
-            .attr("fill", "lightblue");
+        function render() {
+            svg.selectAll("g.node").remove();
+            svg.selectAll(".expanded-rect").remove();
+            svg.selectAll(".arrow").remove();
 
-        nodeGroup.append("text")
-            .attr("x", d => d.x)
-            .attr("y", d => d.y + 6)
-            .attr("text-anchor", "middle")
-            .text(d => d.id);
+            const nodeGroup = svg.selectAll("g.node")
+                .data(nodes)
+                .enter()
+                .append("g")
+                .attr("class", "node")
+                .on("click", (event, d) => {
+                    event.stopPropagation();
+                    if (d.collapsed) {
+                        expandNode(d);
+                    } else {
+                        collapseNode(d);
+                    }
+                });
 
-        function expandNode(event, d) {
-            if (d.collapsed) {
-                d.collapsed = false;
-                render();
-            }
+            // Draw the main node or expanded rectangle
+            nodeGroup.append("rect")
+                .attr("x", d => d.x - d.width / 2)
+                .attr("y", d => d.y - d.height / 2)
+                .attr("width", d => d.width)
+                .attr("height", d => d.height)
+                .attr("class", d => d.collapsed ? "node-rect" : "expanded-rect");
+
+            nodeGroup.append("text")
+                .attr("x", d => d.x)
+                .attr("y", d => d.y + 6)
+                .attr("text-anchor", "middle")
+                .text(d => d.id);
+
+            // Handle subnodes expansion for all levels
+            nodeGroup.each(function (d) {
+                if (!d.collapsed && d.subNodes) {
+                    const expandedWidth = 200;
+                    const expandedHeight = 200;
+
+                    // Draw the expanded rectangle
+                    d3.select(this).append("rect")
+                        .attr("x", d => d.x - expandedWidth / 2)
+                        .attr("y", d => d.y - expandedHeight / 2)
+                        .attr("width", expandedWidth)
+                        .attr("height", expandedHeight)
+                        .attr("class", "expanded-rect");
+
+                    const subNodeGroup = d3.select(this).selectAll(".sub-node")
+                        .data(d.subNodes)
+                        .enter()
+                        .append("g")
+                        .attr("class", "sub-node")
+                        .on("click", (event, subD) => {
+                            event.stopPropagation();
+                            if (subD.collapsed) {
+                                expandNode(subD);
+                            } else {
+                                collapseNode(subD);
+                            }
+                        });
+
+                    // Position subnodes within the expanded rectangle
+                    subNodeGroup.append("rect")
+                        .attr("x", (subD, i) => d.x - expandedWidth / 2 + 20)
+                        .attr("y", (subD, i) => d.y - expandedHeight / 2 + 20 + i * 50)
+                        .attr("width", subD => subD.width)
+                        .attr("height", subD => subD.height)
+                        .attr("fill", "lightgreen");
+
+                    subNodeGroup.append("text")
+                        .attr("x", (subD, i) => d.x - expandedWidth / 2 + 20 + subD.width / 2)
+                        .attr("y", (subD, i) => d.y - expandedHeight / 2 + 20 + i * 50 + 6)
+                        .attr("text-anchor", "middle")
+                        .text(subD => subD.id);
+
+                    subNodeGroup.each(function (subD, i) {
+                        if (!subD.collapsed && subD.subNodes) {
+                            const subSubNodeGroup = d3.select(this).selectAll(".sub-sub-node")
+                                .data(subD.subNodes)
+                                .enter()
+                                .append("g")
+                                .attr("class", "sub-sub-node");
+
+                            subSubNodeGroup.append("rect")
+                                .attr("x", subSubD => subD.x + 60)
+                                .attr("y", subSubD => subD.y + (i * 50))
+                                .attr("width", subSubD => subSubD.width)
+                                .attr("height", subSubD => subSubD.height)
+                                .attr("fill", "lightyellow");
+
+                            subSubNodeGroup.append("text")
+                                .attr("x", subSubD => subD.x + 60 + subSubD.width / 2)
+                                .attr("y", subSubD => subD.y + (i * 50) + 6)
+                                .attr("text-anchor", "middle")
+                                .text(subSubD => subSubD.id);
+                        }
+                    });
+                }
+            });
+
+            drawArrows();
+        }
+
+        function expandNode(d) {
+            d.collapsed = false;
+            positionNodes(nodes);  // Recalculate positions to make space
+            render();
         }
 
         function collapseNode(d) {
             d.collapsed = true;
             collapseSubNodes(d);
+            positionNodes(nodes);  // Recalculate positions to restore original layout
             render();
         }
 
@@ -118,96 +252,6 @@
                     collapseSubNodes(subNode);
                 });
             }
-        }
-
-        function render() {
-            svg.selectAll("g.node").remove();
-
-            const nodeGroup = svg.selectAll("g.node")
-                .data(nodes)
-                .enter()
-                .append("g")
-                .attr("class", "node")
-                .on("click", (event, d) => {
-                    event.stopPropagation();
-                    if (d.collapsed) {
-                        expandNode(event, d);
-                    } else {
-                        collapseNode(d);
-                    }
-                });
-
-            nodeGroup.append("rect")
-                .attr("x", d => d.x - d.width / 2)
-                .attr("y", d => d.y - d.height / 2)
-                .attr("width", d => d.width)
-                .attr("height", d => d.height)
-                .attr("fill", d => d.collapsed ? "lightblue" : "lightgreen");
-
-            nodeGroup.append("text")
-                .attr("x", d => d.x)
-                .attr("y", d => d.y + 6)
-                .attr("text-anchor", "middle")
-                .text(d => d.id);
-
-            nodeGroup.each(function (d) {
-                if (!d.collapsed && d.subNodes) {
-                    const subNodeGroup = d3.select(this).selectAll(".sub-node")
-                        .data(d.subNodes)
-                        .enter()
-                        .append("g")
-                        .attr("class", "sub-node")
-                        .on("click", (event, subD) => {
-                            event.stopPropagation();
-                            if (subD.collapsed) {
-                                subD.collapsed = false;
-                                render();
-                            } else {
-                                subD.collapsed = true;
-                                collapseSubNodes(subD);
-                                render();
-                            }
-                        });
-
-                    subNodeGroup.append("rect")
-                        .attr("x", subD => subD.x - subD.width / 2)
-                        .attr("y", subD => subD.y - subD.height / 2)
-                        .attr("width", subD => subD.width)
-                        .attr("height", subD => subD.height)
-                        .attr("fill", "lightgreen");
-
-                    subNodeGroup.append("text")
-                        .attr("x", subD => subD.x)
-                        .attr("y", subD => subD.y + 6)
-                        .attr("text-anchor", "middle")
-                        .text(subD => subD.id);
-
-                    subNodeGroup.each(function (subD) {
-                        if (!subD.collapsed && subD.subNodes) {
-                            const subSubNodeGroup = d3.select(this).selectAll(".sub-sub-node")
-                                .data(subD.subNodes)
-                                .enter()
-                                .append("g")
-                                .attr("class", "sub-sub-node");
-
-                            subSubNodeGroup.append("rect")
-                                .attr("x", subSubD => subSubD.x - subSubD.width / 2)
-                                .attr("y", subSubD => subSubD.y - subSubD.height / 2)
-                                .attr("width", subSubD => subSubD.width)
-                                .attr("height", subSubD => subSubD.height)
-                                .attr("fill", "lightyellow");
-
-                            subSubNodeGroup.append("text")
-                                .attr("x", subSubD => subSubD.x)
-                                .attr("y", subSubD => subSubD.y + 4)
-                                .attr("text-anchor", "middle")
-                                .text(subSubD => subSubD.id);
-                        }
-                    });
-
-
-                }
-            });
         }
 
         render();

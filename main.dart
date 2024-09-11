@@ -1,522 +1,237 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
-void main() {
-	runApp(SocialContractApp());
-}
+void main() => runApp(MeditationGuideApp());
 
-int passed = 0; // Global integer
-String taskObjectStatus = ''; // Global string
-String taskEnforcerStatus = ''; // Global string
-String groupStatus = ''; // Global string
-
-class SocialContract {
-	bool hasPrivilege;
-
-	SocialContract({this.hasPrivilege = true});
-
-	Future<List<dynamic>> cognitiveRestructuring(
-			BuildContext context, String task, String passedTask, String mode) async {
-		String newTask = task;
-		String newPassedTask = passedTask;
-		int? storyCycle;
-		int? challenge;
-
-		await showDialog(
-			context: context,
-			builder: (context) {
-				return AlertDialog(
-					backgroundColor: Colors.grey[900],
-					title: Text(
-						'Reflecting on the task and its outcomes...',
-						style: TextStyle(color: Colors.cyan),
-					),
-					content: SingleChildScrollView(
-						child: StatefulBuilder(
-							builder: (BuildContext context, setState) {
-								return Column(
-									mainAxisSize: MainAxisSize.min,
-									crossAxisAlignment: CrossAxisAlignment.start,
-									children: [
-										TextFormField(
-											style: TextStyle(color: Colors.cyan),
-											initialValue: task,
-											onChanged: (value) {
-												newTask = value;
-											},
-											decoration: InputDecoration(
-												labelText: 'Task',
-												labelStyle: TextStyle(color: Colors.cyan),
-												enabledBorder: UnderlineInputBorder(
-													borderSide: BorderSide(color: Colors.cyan),
-												),
-											),
-										),
-										TextFormField(
-											style: TextStyle(color: Colors.cyan),
-											initialValue: passedTask,
-											onChanged: (value) {
-												newPassedTask = value;
-											},
-											decoration: InputDecoration(
-												labelText: 'Expectation',
-												labelStyle: TextStyle(color: Colors.cyan),
-												enabledBorder: UnderlineInputBorder(
-													borderSide: BorderSide(color: Colors.cyan),
-												),
-											),
-										),
-										Text(
-											'Where in the story cycle is the other person?',
-											style: TextStyle(color: Colors.cyan),
-										),
-										Column(
-											children: [
-												RadioListTile(
-													title: Text('Awakening'),
-													value: 1,
-													groupValue: storyCycle,
-													onChanged: (int? value) {
-														setState(() {
-															storyCycle = value;
-														});
-													},
-												),
-												RadioListTile(
-													title: Text('Quest'),
-													value: 2,
-													groupValue: storyCycle,
-													onChanged: (int? value) {
-														setState(() {
-															storyCycle = value;
-														});
-													},
-												),
-												RadioListTile(
-													title: Text('Resolution'),
-													value: 3,
-													groupValue: storyCycle,
-													onChanged: (int? value) {
-														setState(() {
-															storyCycle = value;
-														});
-													},
-												),
-											],
-										),
-										Text(
-											'What is the challenge about?',
-											style: TextStyle(color: Colors.cyan),
-										),
-										Column(
-											children: [
-												RadioListTile(
-													title: Text('Norm-break'),
-													value: 1,
-													groupValue: challenge,
-													onChanged: (int? value) {
-														setState(() {
-															challenge = value;
-														});
-													},
-												),
-												RadioListTile(
-													title: Text('Existential/Identity-break'),
-													value: 2,
-													groupValue: challenge,
-													onChanged: (int? value) {
-														setState(() {
-															challenge = value;
-														});
-													},
-												),
-												RadioListTile(
-													title: Text('Pattern/Puzzle'),
-													value: 3,
-													groupValue: challenge,
-													onChanged: (int? value) {
-														setState(() {
-															challenge = value;
-														});
-													},
-												),
-											],
-										),
-										ElevatedButton(
-											onPressed: () async {
-												Navigator.of(context).pop(
-														[newTask, newPassedTask, storyCycle, challenge]);
-											},
-											child: Text('OK', style: TextStyle(color: Colors.cyan)),
-										),
-									],
-								);
-							},
-						),
-					),
-				);
-			},
-		);
-
-		return [newTask, newPassedTask, storyCycle, challenge];
-	}
-
-	List<dynamic> playRound(String player1Action, String player2Action) {
-		String cooperation = "1";
-		if (player1Action == "cooperate" && player2Action == "cooperate") {
-			return ["cooperate", hasPrivilege];
-		} else if (player1Action == "defect" && player2Action == "cooperate") {
-			hasPrivilege = false;
-			return ["defect", hasPrivilege];
-		} else if (player1Action == "cooperate" && player2Action == "defect") {
-			hasPrivilege = false;
-			return ["defect", hasPrivilege];
-		} else if (player1Action == "defect" && player2Action == "defect") {
-			hasPrivilege = false;
-			return ["defect", hasPrivilege];
-		} else {
-			return ["Invalid actions", hasPrivilege];
-		}
-	}
-
-	Future<void> showJokeSuggestionPopup(
-			BuildContext context, int? storyCycle, int? challenge) async {
-		String jokeSuggestion = '';
-
-		if (storyCycle == 1 && challenge == 1) {
-			jokeSuggestion =
-					"Make a joke with paired phrases structure showing transparency (is used when hopeful about something).";
-		} else if (storyCycle == 1 && challenge == 2) {
-			jokeSuggestion =
-					"Make an ironic joke about how insignificant one is alone in the group.";
-		} else if (storyCycle == 1 && challenge == 3) {
-			jokeSuggestion =
-					"Surprise by a simple-truth joke (introduce a personal connection to a mundane situation)";
-		} else if (storyCycle == 2 && challenge == 1) {
-			jokeSuggestion =
-					"Discover new perspectives (clarity in pitching) with reverse jokes.";
-		} else if (storyCycle == 2 && challenge == 2) {
-			jokeSuggestion =
-					"Make a joke about compliance with a compare and contrast structure.";
-		} else if (storyCycle == 2 && challenge == 3) {
-			jokeSuggestion = "Show options by making an incongruent joke.";
-		} else if (storyCycle == 3 && challenge == 1) {
-			jokeSuggestion =
-					"Show how to tolerate and accept with a superior joke structure (used when showing authority in pitching).";
-		} else if (storyCycle == 3 && challenge == 2) {
-			jokeSuggestion = "Make a joke paradox joke about the new situation.";
-		} else if (storyCycle == 3 && challenge == 3) {
-			jokeSuggestion =
-					"Show the signature of a person by a joke with the structure observation and recognition.";
-		}
-
-		await showDialog(
-			context: context,
-			builder: (context) {
-				return AlertDialog(
-					backgroundColor: Colors.grey[900],
-					title: Text('Joke Suggestion', style: TextStyle(color: Colors.cyan)),
-					content: Text(jokeSuggestion, style: TextStyle(color: Colors.cyan)),
-					actions: [
-						ElevatedButton(
-							onPressed: () async {
-								await showClosedLoopCommunicationPopup(context);
-							},
-							child: Text('OK', style: TextStyle(color: Colors.cyan)),
-						),
-					],
-				);
-			},
-		);
-	}
-
-	Future<void> showClosedLoopCommunicationPopup(BuildContext context) async {
-		String taskPerspective = '';
-		String expectationPerspective = '';
-		bool? agreed;
-
-		await showDialog(
-			context: context,
-			builder: (context) {
-				return AlertDialog(
-					backgroundColor: Colors.grey[900],
-					title: Text(
-						'Closed Loop Communication',
-						style: TextStyle(color: Colors.cyan),
-					),
-					content: StatefulBuilder(
-						builder: (BuildContext context, setState) {
-							return Column(
-								mainAxisSize: MainAxisSize.min,
-								crossAxisAlignment: CrossAxisAlignment.start,
-								children: [
-									TextFormField(
-										style: TextStyle(color: Colors.cyan),
-										onChanged: (value) {
-											taskPerspective = value;
-										},
-										decoration: InputDecoration(
-											labelText:
-													'Enter the other parties perspective on the task.',
-											labelStyle: TextStyle(color: Colors.cyan),
-										),
-									),
-									TextFormField(
-										style: TextStyle(color: Colors.cyan),
-										onChanged: (value) {
-											expectationPerspective = value;
-										},
-										decoration: InputDecoration(
-											labelText:
-													'Enter the other parties perspective on the expectation.',
-											labelStyle: TextStyle(color: Colors.cyan),
-										),
-									),
-									Text(
-										'Did the other parties think that you achieved the expectation?',
-										style: TextStyle(color: Colors.cyan),
-									),
-									Row(
-										children: [
-											Radio(
-												value: true,
-												groupValue: agreed,
-												onChanged: (bool? value) {
-													setState(() {
-														agreed = value;
-													});
-												},
-											),
-											Text('Yes', style: TextStyle(color: Colors.cyan)),
-											Radio(
-												value: false,
-												groupValue: agreed,
-												onChanged: (bool? value) {
-													setState(() {
-														agreed = value;
-													});
-												},
-											),
-											Text('No', style: TextStyle(color: Colors.cyan)),
-										],
-									),
-									ElevatedButton(
-										onPressed: () async {
-											passed = agreed! ? 1 : -1;
-											Navigator.of(context).pop();
-											await showStatusPopup(context);
-										},
-										child: Text('OK', style: TextStyle(color: Colors.cyan)),
-									),
-								],
-							);
-						},
-					),
-				);
-			},
-		);
-	}
-
-	Future<void> showStatusPopup(BuildContext context) async {
-		String statusMessage = passed == 1
-				? 'Congratulations! You successfully achieved the expectation.'
-				: 'Unfortunately, you did not achieve the expectation.';
-
-		await showDialog(
-			context: context,
-			builder: (context) {
-				return AlertDialog(
-					backgroundColor: Colors.grey[900],
-					title: Text('Status', style: TextStyle(color: Colors.cyan)),
-					content: SingleChildScrollView(
-						child: Column(
-							mainAxisSize: MainAxisSize.min,
-							crossAxisAlignment: CrossAxisAlignment.start,
-							children: [
-								Text(
-									statusMessage,
-									style: TextStyle(color: Colors.cyan),
-								),
-								TextFormField(
-									onChanged: (value) {
-										taskObjectStatus = value;
-									},
-									style: TextStyle(color: Colors.cyan),
-									decoration: InputDecoration(
-										labelText: 'What new status has the task object?',
-										labelStyle: TextStyle(color: Colors.cyan),
-									),
-								),
-								TextFormField(
-									onChanged: (value) {
-										taskEnforcerStatus = value;
-									},
-									style: TextStyle(color: Colors.cyan),
-									decoration: InputDecoration(
-										labelText: 'What new status has the creator?',
-										labelStyle: TextStyle(color: Colors.cyan),
-									),
-								),
-								TextFormField(
-									onChanged: (value) {
-										groupStatus = value;
-									},
-									style: TextStyle(color: Colors.cyan),
-									decoration: InputDecoration(
-										labelText: 'What new status has the group?',
-										labelStyle: TextStyle(color: Colors.cyan),
-									),
-								),
-								ElevatedButton(
-									onPressed: () {
-										Navigator.of(context).pop();
-									},
-									child: Text('OK', style: TextStyle(color: Colors.cyan)),
-								),
-							],
-						),
-					),
-				);
-			},
-		);
-	}
-}
-
-class SocialContractApp extends StatelessWidget {
+class MeditationGuideApp extends StatelessWidget {
 	@override
 	Widget build(BuildContext context) {
 		return MaterialApp(
-			title: 'Social Contract Simulator',
-			theme: ThemeData.dark().copyWith(
-				textTheme: TextTheme(
-					bodyText2: TextStyle(color: Colors.cyan),
+			home: Scaffold(
+				backgroundColor: Colors.black,
+				appBar: AppBar(
+					title: Text('Meditation Guide in Rhyme'),
+					backgroundColor: Colors.black,
 				),
+				body: MeditationGuide(),
 			),
-			home: SocialContractScreen(),
 		);
 	}
 }
 
-class SocialContractScreen extends StatefulWidget {
+class MeditationGuide extends StatefulWidget {
 	@override
-	_SocialContractScreenState createState() => _SocialContractScreenState();
+	_MeditationGuideState createState() => _MeditationGuideState();
 }
 
-class _SocialContractScreenState extends State<SocialContractScreen> {
-	String need = '';
-	String abilities = '';
-	String otherContracts = '';
-	String task = '';
-	String expectation = '';
+class _MeditationGuideState extends State<MeditationGuide> {
+	FlutterTts flutterTts = FlutterTts();
+	bool isPlaying = false;
+
+	@override
+	void initState() {
+		super.initState();
+		// Initialize TTS settings
+		flutterTts.setLanguage('en-US');
+		flutterTts.setPitch(1.0);
+		flutterTts.setSpeechRate(0.5);
+	}
+
+	Future<void> _speak(String text) async {
+		print("Attempting to speak: $text");
+
+		// Check if language is available
+		var isLanguageAvailable = await flutterTts.isLanguageAvailable('en-US');
+		if (!isLanguageAvailable) {
+			print('The selected language is not available on this device.');
+			return;
+		}
+
+		// Listen for completion
+		flutterTts.setCompletionHandler(() {
+			print("Speech completed");
+			setState(() {
+				isPlaying = false;
+			});
+		});
+
+		// Speak the text
+		await flutterTts.speak(text);
+	}
+
+	Future<void> _stop() async {
+		print("Stopping speech");
+		await flutterTts.stop();
+	}
+
+	void _toggleTTS(String text) {
+		print("Toggling TTS: $text");
+		setState(() {
+			if (isPlaying) {
+				_stop();
+			} else {
+				_speak("$text");
+			}
+			isPlaying = !isPlaying;
+		});
+	}
+
+	@override
+	void dispose() {
+		_stop();
+		super.dispose();
+	}
 
 	@override
 	Widget build(BuildContext context) {
-		return Scaffold(
-			appBar: AppBar(
-				title: Text('Social Contract Simulator',
-						style: TextStyle(color: Colors.cyan)),
-			),
-			body: Center(
-				child: ElevatedButton(
-					onPressed: () {
-						_showInputDialog(context);
-					},
-					child: Text('Enter Details'),
-				),
-			),
-		);
-	}
-
-	Future<void> _showInputDialog(BuildContext context) async {
-		await showDialog(
-			context: context,
-			builder: (context) {
-				return AlertDialog(
-					backgroundColor: Colors.grey[900],
-					title: Text('Enter Details', style: TextStyle(color: Colors.cyan)),
-					content: SingleChildScrollView(
-						child: Column(
-							mainAxisSize: MainAxisSize.min,
-							crossAxisAlignment: CrossAxisAlignment.start,
+		return SingleChildScrollView(
+			padding: EdgeInsets.all(16.0),
+			child: Column(
+				crossAxisAlignment: CrossAxisAlignment.start,
+				children: [
+					Text(
+						'Meditation Guide in Rhyme',
+						style: TextStyle(
+								color: const Color(0xFFED9121),
+								fontSize: 24,
+								fontWeight: FontWeight.bold),
+					),
+					SizedBox(height: 20),
+					ElevatedButton(
+						onPressed: () =>
+								_toggleTTS('What: Pause and Feel - Impermanence I reveal. '
+										'Inhale with mirrors in sight, and crystal balls alight. '
+										'Exhale, Be Strong - Emotions to me belong.'
+										'Inhale and Say - "May emotions bring joy each day.'),
+						child: Text(isPlaying ? 'Stop TTS' : 'Start \u1d599\u1d599\u1d598'),
+						style: ElevatedButton.styleFrom(
+							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
+						),
+					),
+					SizedBox(height: 20),
+					RichText(
+						text: TextSpan(
+							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
 							children: [
-								TextFormField(
-									onChanged: (value) {
-										need = value;
-									},
-									style: TextStyle(color: Colors.cyan),
-									decoration: InputDecoration(
-										labelText: 'What need should the task meet?',
-										labelStyle: TextStyle(color: Colors.cyan),
-									),
-								),
-								TextFormField(
-									onChanged: (value) {
-										abilities = value;
-									},
-									style: TextStyle(color: Colors.cyan),
-									decoration: InputDecoration(
-										labelText: 'What abilities do the players have?',
-										labelStyle: TextStyle(color: Colors.cyan),
-									),
-								),
-								TextFormField(
-									onChanged: (value) {
-										otherContracts = value;
-									},
-									style: TextStyle(color: Colors.cyan),
-									decoration: InputDecoration(
-										labelText: 'What other contracts frame the task?',
-										labelStyle: TextStyle(color: Colors.cyan),
-									),
-								),
-								TextFormField(
-									onChanged: (value) {
-										task = value;
-									},
-									style: TextStyle(color: Colors.cyan),
-									decoration: InputDecoration(
-										labelText: 'Task?',
-										labelStyle: TextStyle(color: Colors.cyan),
-									),
-								),
-								TextFormField(
-									onChanged: (value) {
-										expectation = value;
-									},
-									style: TextStyle(color: Colors.cyan),
-									decoration: InputDecoration(
-										labelText: 'Expectation?',
-										labelStyle: TextStyle(color: Colors.cyan),
-									),
-								),
-								ElevatedButton(
-									onPressed: () async {
-										var result = await SocialContract().cognitiveRestructuring(
-											context,
-											task,
-											expectation,
-											"leader",
-										);
-
-										if (result != null && result.length == 4) {
-											String newTask = result[0];
-											String newPassedTask = result[1];
-											int? storyCycle = result[2];
-											int? challenge = result[3];
-
-											await SocialContract().showJokeSuggestionPopup(
-												context,
-												storyCycle,
-												challenge,
-											);
-										}
-									},
-									child: Text('OK', style: TextStyle(color: Colors.cyan)),
+								TextSpan(
+									text:
+											'What:\n\u23F3 Pause and Feel - Impermanence I reveal.\n\u267B Inhale with mirrors in sight, and crystal balls alight. \n\u270A Exhale, Be Strong - Emotions to me belong.\n\u2600 Inhale and Say - "May emotions bring joy each day."\n\n',
 								),
 							],
 						),
 					),
-				);
-			},
+					SizedBox(height: 20),
+					ElevatedButton(
+						onPressed: () =>
+								_toggleTTS('Pause and See - Change stirs up unease in me.'
+										'Inhale with mirrors in sight, and crystal balls alight. '
+										'Exhale with Might - Determination in sight.'
+										'Inhale and say - "Acceptance makes health stay."'),
+						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
+						style: ElevatedButton.styleFrom(
+							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
+						),
+					),
+					SizedBox(height: 20),
+					RichText(
+						text: TextSpan(
+							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
+							children: [
+								TextSpan(
+									text:
+											'How:\n\u2639 Pause and See - Change stirs up unease in me.\n\u267B Inhale with mirrors in sight, and crystal balls alight.  \n\u25CB\u25C9 Exhale with Might - Determination in sight.\n\u2714 Inhale and say - "Acceptance makes health stay."\n\n',
+								),
+							],
+						),
+					),
+					SizedBox(height: 20),
+					ElevatedButton(
+						onPressed: () =>
+								_toggleTTS('Pause and Detach - From self, emotions unlatch.'
+										'Inhale with mirrors in sight, and crystal balls alight.'
+										'Exhale, Embrace - the new with grace.'
+										'Inhale and Plea - "May I live in peace with me."'),
+						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
+						style: ElevatedButton.styleFrom(
+							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
+						),
+					),
+					SizedBox(height: 20),
+					RichText(
+						text: TextSpan(
+							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
+							children: [
+								TextSpan(
+									text:
+											'Why:\n\u270B Pause and Detach - From self, emotions unlatch.\n\u267B Inhale with mirrors in sight, and crystal balls alight. \n\u263A Exhale, Embrace - the new with grace.\n\u262E Inhale and Plea - "May I live in peace with me."\n',
+								),
+							],
+						),
+					),
+					SizedBox(height: 20),
+					ElevatedButton(
+						onPressed: () => _toggleTTS(
+								'What destination do you want to review? What path of ours will guide you through?'),
+						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
+						style: ElevatedButton.styleFrom(
+							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
+						),
+					),
+					SizedBox(height: 20),
+					RichText(
+						text: TextSpan(
+							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
+							children: [
+								TextSpan(
+									text:
+											'\n\n----------------\n"I feel X when Y”\nAnd the fairy continued:\n“and therefore you must, should, could, or won’t make Z-road."\nTogether in choir they the troll and fairy then say:\n“What destination do you want to review? What path of ours will guide you through?”\n\n',
+								),
+							],
+						),
+					),
+					SizedBox(height: 20),
+					ElevatedButton(
+						onPressed: () => _toggleTTS(
+								'In troll’s mirror, pains remain. In Fairy’s ball, we seek our gain.'),
+						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
+						style: ElevatedButton.styleFrom(
+							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
+						),
+					),
+					SizedBox(height: 20),
+					RichText(
+						text: TextSpan(
+							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
+							children: [
+								TextSpan(
+									text:
+											'In troll’s mirror, pains remain. In Fairy’s ball, we seek our gain.',
+								),
+							],
+						),
+					),
+					ElevatedButton(
+						onPressed: () => _toggleTTS(
+								'A chance to grow, to learn, and gain,\nfrom each experience, not in vain.'),
+						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
+						style: ElevatedButton.styleFrom(
+							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
+						),
+					),
+					SizedBox(height: 20),
+					RichText(
+						text: TextSpan(
+							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
+							children: [
+								TextSpan(
+									text:
+											'"A chance to grow, to learn, and gain,\nfrom each experience, not in vain."\n\n',
+								),
+							],
+						),
+					)
+				],
+			),
 		);
 	}
 }
