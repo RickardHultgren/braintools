@@ -24,13 +24,21 @@ class MeditationGuide extends StatefulWidget {
 	_MeditationGuideState createState() => _MeditationGuideState();
 }
 
-class _MeditationGuideState extends State<MeditationGuide> {
+class _MeditationGuideState extends State<MeditationGuide> with TickerProviderStateMixin {
 	FlutterTts flutterTts = FlutterTts();
 	bool isPlaying = false;
+
+	// Animation controller for gradient glow effect
+	late AnimationController _controller;
 
 	@override
 	void initState() {
 		super.initState();
+		_controller = AnimationController(
+			vsync: this,
+			duration: Duration(seconds: 2),
+		)..repeat(reverse: true); // Repeat the animation to create a glowing effect
+
 		// Initialize TTS settings
 		flutterTts.setLanguage('en-US');
 		flutterTts.setPitch(1.0);
@@ -70,7 +78,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
 			if (isPlaying) {
 				_stop();
 			} else {
-				_speak("$text");
+				_speak(text);
 			}
 			isPlaying = !isPlaying;
 		});
@@ -78,6 +86,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
 
 	@override
 	void dispose() {
+		_controller.dispose();
 		_stop();
 		super.dispose();
 	}
@@ -92,146 +101,58 @@ class _MeditationGuideState extends State<MeditationGuide> {
 					Text(
 						'Meditation Guide in Rhyme',
 						style: TextStyle(
-								color: const Color(0xFFED9121),
-								fontSize: 24,
-								fontWeight: FontWeight.bold),
-					),
-					SizedBox(height: 20),
-					ElevatedButton(
-						onPressed: () =>
-								_toggleTTS('What: Pause and Feel - Impermanence I reveal. '
-										'Inhale with mirrors in sight, and crystal balls alight. '
-										'Exhale, Be Strong - Emotions to me belong.'
-										'Inhale and Say - "May emotions bring joy each day.'),
-						child: Text(isPlaying ? 'Stop TTS' : 'Start \u1d599\u1d599\u1d598'),
-						style: ElevatedButton.styleFrom(
-							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
+							color: const Color(0xFFED9121),
+							fontSize: 24,
+							fontWeight: FontWeight.bold,
 						),
 					),
 					SizedBox(height: 20),
-					RichText(
-						text: TextSpan(
-							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
-							children: [
-								TextSpan(
-									text:
-											'What:\n\u23F3 Pause and Feel - Impermanence I reveal.\n\u267B Inhale with mirrors in sight, and crystal balls alight. \n\u270A Exhale, Be Strong - Emotions to me belong.\n\u2600 Inhale and Say - "May emotions bring joy each day."\n\n',
-								),
-							],
-						),
+					_buildGlowingButton(
+						text: 'What: Pause and Feel - Impermanence I reveal...',
+						buttonText: isPlaying ? 'Stop TTS' : 'Start TTS',
 					),
 					SizedBox(height: 20),
-					ElevatedButton(
-						onPressed: () =>
-								_toggleTTS('Pause and See - Change stirs up unease in me.'
-										'Inhale with mirrors in sight, and crystal balls alight. '
-										'Exhale with Might - Determination in sight.'
-										'Inhale and say - "Acceptance makes health stay."'),
-						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
-						style: ElevatedButton.styleFrom(
-							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
-						),
+					_buildGlowingButton(
+						text: 'Pause and See - Change stirs up unease in me...',
+						buttonText: isPlaying ? 'Stop TTS' : 'Start TTS',
 					),
 					SizedBox(height: 20),
-					RichText(
-						text: TextSpan(
-							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
-							children: [
-								TextSpan(
-									text:
-											'How:\n\u2639 Pause and See - Change stirs up unease in me.\n\u267B Inhale with mirrors in sight, and crystal balls alight.  \n\u25CB\u25C9 Exhale with Might - Determination in sight.\n\u2714 Inhale and say - "Acceptance makes health stay."\n\n',
-								),
-							],
-						),
+					_buildGlowingButton(
+						text: 'Pause and Detach - From self, emotions unlatch...',
+						buttonText: isPlaying ? 'Stop TTS' : 'Start TTS',
 					),
-					SizedBox(height: 20),
-					ElevatedButton(
-						onPressed: () =>
-								_toggleTTS('Pause and Detach - From self, emotions unlatch.'
-										'Inhale with mirrors in sight, and crystal balls alight.'
-										'Exhale, Embrace - the new with grace.'
-										'Inhale and Plea - "May I live in peace with me."'),
-						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
-						style: ElevatedButton.styleFrom(
-							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
-						),
-					),
-					SizedBox(height: 20),
-					RichText(
-						text: TextSpan(
-							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
-							children: [
-								TextSpan(
-									text:
-											'Why:\n\u270B Pause and Detach - From self, emotions unlatch.\n\u267B Inhale with mirrors in sight, and crystal balls alight. \n\u263A Exhale, Embrace - the new with grace.\n\u262E Inhale and Plea - "May I live in peace with me."\n',
-								),
-							],
-						),
-					),
-					SizedBox(height: 20),
-					ElevatedButton(
-						onPressed: () => _toggleTTS(
-								'What destination do you want to review? What path of ours will guide you through?'),
-						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
-						style: ElevatedButton.styleFrom(
-							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
-						),
-					),
-					SizedBox(height: 20),
-					RichText(
-						text: TextSpan(
-							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
-							children: [
-								TextSpan(
-									text:
-											'\n\n----------------\n"I feel X when Y”\nAnd the fairy continued:\n“and therefore you must, should, could, or won’t make Z-road."\nTogether in choir they the troll and fairy then say:\n“What destination do you want to review? What path of ours will guide you through?”\n\n',
-								),
-							],
-						),
-					),
-					SizedBox(height: 20),
-					ElevatedButton(
-						onPressed: () => _toggleTTS(
-								'In troll’s mirror, pains remain. In Fairy’s ball, we seek our gain.'),
-						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
-						style: ElevatedButton.styleFrom(
-							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
-						),
-					),
-					SizedBox(height: 20),
-					RichText(
-						text: TextSpan(
-							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
-							children: [
-								TextSpan(
-									text:
-											'In troll’s mirror, pains remain. In Fairy’s ball, we seek our gain.',
-								),
-							],
-						),
-					),
-					ElevatedButton(
-						onPressed: () => _toggleTTS(
-								'A chance to grow, to learn, and gain,\nfrom each experience, not in vain.'),
-						child: Text(isPlaying ? 'Stop TTS' : 'Start TTS'),
-						style: ElevatedButton.styleFrom(
-							foregroundColor: const Color(0xaa000000),                 backgroundColor: isPlaying ? Colors.red : Colors.green,
-						),
-					),
-					SizedBox(height: 20),
-					RichText(
-						text: TextSpan(
-							style: TextStyle(color: const Color(0xFFED9121), fontSize: 18),
-							children: [
-								TextSpan(
-									text:
-											'"A chance to grow, to learn, and gain,\nfrom each experience, not in vain."\n\n',
-								),
-							],
-						),
-					)
 				],
 			),
+		);
+	}
+
+	Widget _buildGlowingButton({required String text, required String buttonText}) {
+		return ElevatedButton(
+			onPressed: () => _toggleTTS(text),
+			child: Text(buttonText),
+			style: ButtonStyle(
+				foregroundColor: MaterialStateProperty.all<Color>(const Color(0xaa000000)),
+				padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(vertical: 16.0)),
+				backgroundColor: isPlaying
+						? MaterialStateProperty.all(Colors.transparent)
+						: MaterialStateProperty.all(const Color(0xff00aa00)),
+				overlayColor: MaterialStateProperty.all(Colors.transparent),
+			),
+		);
+	}
+
+	// Widget to build gradient and glow animation for buttons
+	Widget _buildGlowingEffect(Widget child) {
+		return ShaderMask(
+			shaderCallback: (bounds) {
+				return RadialGradient(
+					center: Alignment.center,
+					radius: 1.0,
+					colors: <Color>[Colors.red, Colors.transparent],
+					stops: <double>[0.5, 1.0],
+				).createShader(bounds);
+			},
+			child: child,
 		);
 	}
 }
