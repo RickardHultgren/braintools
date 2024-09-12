@@ -126,7 +126,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
 					SizedBox(height: 20),
 					ElevatedButton(
 						onPressed: () =>
-								_toggleTTS('Pause and See - Change stirs up unease in me.'
+								_toggleTTS('How: Pause and See - Change stirs up unease in me.'
 										'Inhale with mirrors in sight, and crystal balls alight. '
 										'Exhale with Might - Determination in sight.'
 										'Inhale and say - "Acceptance makes health stay."'),
@@ -168,7 +168,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
 							children: [
 								TextSpan(
 									text:
-											'Why:\n\u270B Pause and Detach - From self, emotions unlatch.\n\u267B Inhale with mirrors in sight, and crystal balls alight. \n\u263A Exhale, Embrace - the new with grace.\n\u262E Inhale and Plea - "May I live in peace with me."\n',
+											'Why:\n\u270B Pause and Detach - From self, emotions unlatch.\n\u267B Inhale with mirrors in sight, and crystal balls alight. \n\u263A Exhale, Embrace - the new with grace.\n\u262E Inhale and Plea - "May I live in peace with me."\n\n- \u2740 \u2740 \u2740 -\n\n',
 								),
 							],
 						),
@@ -190,7 +190,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
 							children: [
 								TextSpan(
 									text:
-											'\n\n----------------\n"I feel X when Y”\nAnd the fairy continued:\n“and therefore you must, should, could, or won’t make Z-road."\nTogether in choir they the troll and fairy then say:\n“What destination do you want to review? What path of ours will guide you through?”\n\n',
+											'"I feel X when Y”\nAnd the fairy continued:\n“and therefore you must, should, could, or won’t make Z-road."\nTogether in choir they the troll and fairy then say:\n“What destination do you want to review? What path of ours will guide you through?”\n\n',
 								),
 							],
 						),
@@ -211,7 +211,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
 							children: [
 								TextSpan(
 									text:
-											'In troll’s mirror, pains remain. In Fairy’s ball, we seek our gain.',
+											'\nIn troll’s mirror, pains remain. In Fairy’s ball, we seek our gain.\n\n',
 								),
 							],
 						),
@@ -232,7 +232,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
 							children: [
 								TextSpan(
 									text:
-											'"A chance to grow, to learn, and gain,\nfrom each experience, not in vain."\n\n',
+											'\n"A chance to grow, to learn, and gain,\nfrom each experience, not in vain."\n\n',
 								),
 							],
 						),
