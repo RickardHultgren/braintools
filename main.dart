@@ -150,11 +150,11 @@ class _MeditationGuideState extends State<MeditationGuide> {
           ),
           SizedBox(height: 20),
           ElevatedButton(
-            onPressed: () =>
-                _toggleTTS('Pause and Detach - From self, emotions unlatch.'
-                    'Inhale from this brew, and the way we shall view.'
-                    'Exhale, Embrace - the new with grace.'
-                    'Inhale and Plea - "May I live in peace with me."'),
+            onPressed: () => _toggleTTS(
+                'Why: Pause and Detach - From self, emotions unlatch.'
+                'In sale of this crew, the way we view'
+                'Exhale, Embrace - the new with grace.'
+                'Inhale and Plea - "May I live in peace with me."'),
             child: Text(isPlaying ? '\u23F9 TTS' : '\u23F5 TTS'),
             style: ElevatedButton.styleFrom(
               foregroundColor: const Color(0xaa000000),
