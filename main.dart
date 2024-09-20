@@ -100,7 +100,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
           ElevatedButton(
             onPressed: () =>
                 _toggleTTS('What: Pause and Feel - Impermanence I reveal. '
-                    'Inhale from this brew, and the way we shall view'
+                    'Inhale from this brew, and the way we shall view.'
                     'Exhale, Be Strong - Emotions to me belong.'
                     'Inhale, May emotions bring joy each day.'),
             child: Text(isPlaying ? '\u23F9 TTS' : '\u23F5 TTS'),
@@ -126,9 +126,9 @@ class _MeditationGuideState extends State<MeditationGuide> {
           ElevatedButton(
             onPressed: () =>
                 _toggleTTS('How: Pause and See - Change stirs up unease in me.'
-                    'Inhale from this brew, and the way we shall view '
+                    'Inhale from this brew, and the way we shall view.'
                     'Exhale with Might - Determination in sight.'
-                    'Inhale with acceptance in hand, health shall stand,'),
+                    'Inhale with acceptance in hand, health shall stand.'),
             child: Text(isPlaying ? '\u23F9 TTS' : '\u23F5 TTS'),
             style: ElevatedButton.styleFrom(
               foregroundColor: const Color(0xaa000000),
@@ -143,7 +143,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
               children: [
                 TextSpan(
                   text:
-                      'How:\n\u2639 Pause and See - Change stirs up unease in me.\n\u267B Inhale from this brew, and the way we shall view  \n\u25CB\u25C9 Exhale with Might - Determination in sight.\n\u2714 Inhale with acceptance in hand, health shall stand."\n\n',
+                      'How:\n\u2639 Pause and See - Change stirs up unease in me.\n\u267B In sale of this crew, the way we view. \n\u25CB\u25C9 Exhale with Might - Determination in sight.\n\u2714 Inhale with acceptance in hand, health shall stand."\n\n',
                 ),
               ],
             ),
@@ -152,7 +152,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
           ElevatedButton(
             onPressed: () =>
                 _toggleTTS('Pause and Detach - From self, emotions unlatch.'
-                    'Inhale from this brew, and the way we shall view'
+                    'In sale of this crew, the way we view.'
                     'Exhale, Embrace - the new with grace.'
                     'Inhale and Plea - "May I live in peace with me."'),
             child: Text(isPlaying ? '\u23F9 TTS' : '\u23F5 TTS'),
