@@ -143,7 +143,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
               children: [
                 TextSpan(
                   text:
-                      'How:\n\u2639 Pause and See - Change stirs up unease in me.\n\u267B In sale of this crew, the way we view. \n\u25CB\u25C9 Exhale with Might - Determination in sight.\n\u2714 Inhale with acceptance in hand, health shall stand."\n\n',
+                      'How:\n\u2639 Pause and See - Change stirs up unease in me.\n\u267B Inhale from this brew, and the way we shall view. \n\u25CB\u25C9 Exhale with Might - Determination in sight.\n\u2714 Inhale with acceptance in hand, health shall stand."\n\n',
                 ),
               ],
             ),
@@ -152,7 +152,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
           ElevatedButton(
             onPressed: () =>
                 _toggleTTS('Pause and Detach - From self, emotions unlatch.'
-                    'In sale of this crew, the way we view.'
+                    'Inhale from this brew, and the way we shall view.'
                     'Exhale, Embrace - the new with grace.'
                     'Inhale and Plea - "May I live in peace with me."'),
             child: Text(isPlaying ? '\u23F9 TTS' : '\u23F5 TTS'),
@@ -169,7 +169,7 @@ class _MeditationGuideState extends State<MeditationGuide> {
               children: [
                 TextSpan(
                   text:
-                      'Why:\n\u270B Pause and Detach - From self, emotions unlatch.\n\u267B Inhale from this brew, and the way we shall view. \n\u263A Exhale, Embrace - the new with grace.\n\u262E Inhale and Plea - "May I live in peace with me."\n\n- \u2740 \u2740 \u2740 -\n\n',
+                      'Why:\n\u270B Pause and Detach - From self, emotions unlatch.\n\u267B In sale of this crew, the way we view. \n\u263A Exhale, Embrace - the new with grace.\n\u262E Inhale and Plea - "May I live in peace with me."\n\n- \u2740 \u2740 \u2740 -\n\n',
                 ),
               ],
             ),
